@@ -1,0 +1,9 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/v311/Scripts/python.exe",
+  "python.pythonPath": "${workspaceFolder}/v311/Scripts/python.exe",
+  "python.terminal.activateEnvironment": true,
+  "terminal.integrated.env.windows": {
+    "VIRTUAL_ENV": "${workspaceFolder}\\v311",
+    "PATH": "${workspaceFolder}\\v311\\Scripts;${env:PATH}"
+  }
+}

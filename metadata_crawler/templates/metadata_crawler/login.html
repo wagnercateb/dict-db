@@ -1,0 +1,43 @@
+{% extends 'metadata_crawler/base.html' %}
+
+{% block title %}Login - Database Metadata Crawler{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <!-- Login específico do app: formulário simples para autenticar e acessar recursos protegidos. -->
+        <div class="card">
+            <div class="card-header bg-primary text-white py-1">
+                <h5 class="mb-0">Entrar</h5>
+            </div>
+            <div class="card-body py-2">
+                <!-- Campos de autenticação: usuário e senha -->
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="id_username" class="form-label">Username</label>
+                        <input type="text" name="username" class="form-control" id="id_username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_password" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" id="id_password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        <strong>Form errors:</strong>
+                        <ul>
+                            {% for field, errors in form.errors.items %}
+                                <li>{{ field }}: {{ errors|join:", " }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

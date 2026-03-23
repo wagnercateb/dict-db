@@ -1,0 +1,82 @@
+{% extends 'metadata_crawler/base.html' %}
+
+{% block title %}Home - Database Metadata Crawler{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <h2>Conexões de Banco de Dados</h2>
+            <div>
+                {% if request.session.can_add_connection %}
+                    <a href="{% url 'add_connection' %}" class="btn btn-primary btn-sm">Adicionar Conexão</a>
+                {% endif %}
+            </div>
+        </div>
+        {% if connections %}
+            <div class="table-responsive">
+                <!--
+                Página inicial: lista conexões e mostra descrições quando habilitado pelo toggle na navbar.
+                Inclui ações de ver, rastrear, editar e excluir (se permitido).
+                -->
+                <table class="table table-striped table-hover table-sm">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Servidor</th>
+                            <th>Banco de Dados</th>
+                            <th>Tipo</th>
+                            <th>Último Rastreamento</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for connection in connections %}
+                            <tr>
+                                <td>{{ connection.name|lower }}</td>
+                                <td>{{ connection.server|lower }}</td>
+                                <td>{{ connection.database|lower }}</td>
+                                <td>{{ connection.get_database_type_display|lower }}</td>
+                                <td>
+                                    {% if connection.last_crawled %}
+                                        {{ connection.last_crawled|date:"d/m/Y H:i" }}
+                                    {% else %}
+                                        Nunca
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{% url 'connection_detail' connection.id %}" class="btn btn-sm btn-info">Ver</a>
+                                    {% if request.session.can_add_connection %}
+                                    <a href="{% url 'crawl_database' connection.id %}" class="btn btn-sm btn-success">Rastrear</a>
+                                    <a href="{% url 'edit_connection' connection.id %}" class="btn btn-sm btn-primary">Editar</a>
+                                    <a href="{% url 'delete_connection' connection.id %}" class="btn btn-sm btn-danger">Excluir</a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr class="connection-comments-row">
+                                <td colspan="6">
+                                    <!-- Descrição da conexão: visível quando o corpo tem a classe `show-conn-comments` -->
+                                    <div class="connection-comments-content">
+                                        {% for c in connection.comments.all %}
+                                            {% if c.comment_type == 'CONNECTION' %}
+                                                <div>{{ c.user.get_full_name|default:c.user.username }}: {{ c.comment }}</div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-info">
+                Nenhuma conexão de banco de dados encontrada.
+                {% if request.session.can_add_connection %}
+                    <a href="{% url 'add_connection' %}">Adicione uma nova conexão</a>.
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

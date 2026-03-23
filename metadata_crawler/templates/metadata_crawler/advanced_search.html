@@ -1,0 +1,449 @@
+{% extends 'metadata_crawler/base.html' %}
+{% load highlight %}
+{% load external_links %}
+
+{% block title %}Pesquisa Avançada - Metadados{% endblock %}
+
+{% block content %}
+<form method="get" class="row g-2" id="advancedSearchForm">
+<div class="d-flex justify-content-between align-items-center mb-2">
+    <h2>Pesquisa Avançada
+        <button type="button" class="btn btn-outline-primary btn-sm" onclick="copyShareUrl()">Link desta busca</button>
+    </h2>
+
+    <div class="d-flex align-items-center gap-3">
+        <div class="dropdown">
+            <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="connectionsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <span id="selectedConnectionsText">Todas as Conexões</span>
+            </button>
+            <div class="dropdown-menu p-3" aria-labelledby="connectionsDropdown" style="min-width: 380px;">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h6 class="dropdown-header mb-0">Selecionar Conexões</h6>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" id="toggleConnectionsAll">Selecionar/Desmarcar todas</button>
+                </div>
+                <div id="connectionCheckboxes" class="small">
+                    {{ form.connections }}
+                </div>
+            </div>
+        </div>
+        <a href="{% url 'home' %}" class="btn btn-secondary btn-sm">Voltar para Início</a>
+    </div>
+</div>
+<script>
+function copyShareUrl(){
+  const url = window.location.href;
+  navigator.clipboard.writeText(url).then(()=>{
+    const btns = document.querySelectorAll('button[onclick="copyShareUrl()"]');
+    btns.forEach(b=>{ b.textContent = 'Link copiado'; setTimeout(()=>{ b.textContent = 'Copiar link'; }, 2000); });
+  });
+}
+</script>
+
+    <div class="col-12">
+        <div class="card mb-2">
+            <div class="card-header bg-primary text-white py-1">
+                <h5 class="mb-0">Filtros de tabelas/views</h5>
+            </div>
+            <div class="card-body py-2">
+                <div class="row g-2 align-items-end">
+                    <div class="col-md-4">
+                        <label class="form-label">Tabela/View</label>
+                        {{ form.table_name }}
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Schema</label>
+                        {{ form.table_schema }}
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Tipo (TABLE/VIEW)</label>
+                        {{ form.table_type }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="card mb-2">
+            <!--
+            Pesquisa avançada:
+            - Tabelas/Views: busca por nome/schema (apenas se preenchidos).
+            - Campos: busca por campo/tipo de dado (apenas se preenchidos) e exclusão por termos em "Exceto tabelas".
+            - Comentários: texto (tokens combinados por OR), tipos, autores e conexões; roda se qualquer filtro estiver presente.
+            -->
+            <div class="card-header bg-primary text-white py-1">
+                <h5 class="mb-0">Filtros de campos</h5>
+            </div>
+            <div class="card-body py-2">
+                <div class="row g-2 align-items-end">
+                    <div class="col-md-3">
+                        <label class="form-label">Campo</label>
+                        {{ form.field_name }}
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Tipo de Dado</label>
+                        {{ form.field_data_type }}
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">{{ form.field_table_type.label }}</label>
+                        {{ form.field_table_type }}
+                    </div>
+                    <div class="col-md-3">
+                        <label for="id_exclude_table_terms" class="form-label">Exceto tabelas</label>
+                        <!-- Termos separados por vírgula, case-insensitive; exclui tabelas/views cujo nome contenha qualquer termo. -->
+                        {{ form.exclude_table_terms }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="card mb-2">
+            <div class="card-header bg-primary text-white py-1 d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Filtros de comentários</h5>
+                <div class="dropdown">
+                    <button class="btn btn-outline-light btn-sm dropdown-toggle" type="button" id="authorsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span id="selectedAuthorsText">Todos os Autores</span>
+                    </button>
+                    <div class="dropdown-menu p-3 dropdown-menu-end" aria-labelledby="authorsDropdown" style="min-width: 380px;">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="dropdown-header mb-0">Selecionar Autores</h6>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" id="toggleAuthorsAll">Selecionar/Desmarcar todas</button>
+                        </div>
+                        <div id="authorCheckboxes" class="small">
+                            {{ form.comment_authors }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body py-2">
+                <div class="row g-2 align-items-end">
+                    <div class="col-md-8">
+                        <label class="form-label">Texto do Comentário</label>
+                        <!-- Palavras são separadas e combinadas por OR para busca parcial. -->
+                        {{ form.comment_text }}
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Tipo de Comentário</label>
+                        {{ form.comment_type }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 d-flex justify-content-end mt-2">
+        <button type="submit" class="btn btn-primary">Pesquisar</button>
+    </div>
+</form>
+
+
+{% if not tables and not fields and not comments and request.GET %}
+    <div class="alert alert-info py-2">Nenhum resultado encontrado com os filtros informados.</div>
+{% endif %}
+
+{% if tables or fields or comments %}
+    <h4 class="mb-2">Resultados</h4>
+{% endif %}
+
+<div class="row">
+    <div class="col-md-12">
+        {% if tables %}
+            <div class="card mb-2">
+                <div class="card-header bg-info text-dark  d-flex align-items-center py-1">
+                    <h5 class="mb-0">Tabelas e Views</h5>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-light text-dark">{{ tables.count }}</span>
+                        <button type="button" id="toggleTablesSection" class="btn btn-sm btn-primary">Ocultar</button>
+                    </div>
+                </div>
+                <div class="card-body py-2" id="tablesSectionBody">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Banco de Dados</th>
+                                    <th>Esquema</th>
+                                    <th>Nome</th>
+                                    <th>Tipo</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for table in tables %}
+                                    <tr>
+                                        <td><span class="badge bg-secondary">{{ table.database_connection.name }}</span></td>
+                                        <td>{{ table.schema|highlight:table_tokens }}</td>
+                                        <td>{{ table.name|highlight:table_tokens }}</td>
+                                        <td>
+                                            {% if table.type == 'TABLE' %}
+                                                <span class="badge bg-primary">Tabela</span>
+                                            {% else %}
+                                                <span class="badge bg-info">View</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'table_detail' table.id %}" class="btn btn-primary btn-sm " style="font-size: 0.75rem; line-height: 1;">Ver detalhes</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if fields %}
+            <div class="card mb-2">
+                <div class="card-header bg-info text-dark d-flex align-items-center py-1">
+                    <h5 class="mb-0">Campos</h5>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-light text-dark">{{ fields.count }}</span>
+                        <button type="button" id="toggleFieldsSection" class="btn btn-sm btn-primary">Ocultar</button>
+                    </div>
+                </div>
+                <div class="card-body py-2" id="fieldsSectionBody">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Conexão</th>
+                                    <th>Tabela</th>
+                                    <th>Campo</th>
+                                    <th>Tipo de Dado</th>
+                                    <th>Nulo</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for field in fields %}
+                                    <tr>
+                                        <td><span class="badge bg-secondary">{{ field.table.database_connection.name }}</span></td>
+                                        <td>
+                                            {% if field.table.type == 'TABLE' %}
+                                                <span class="badge bg-success me-1">TABLE</span>
+                                            {% else %}
+                                                <span class="badge bg-info me-1">VIEW</span>
+                                            {% endif %}
+                                            {{ field.table.schema|highlight:field_tokens }}.{{ field.table.name|highlight:field_tokens }}
+                                        </td>
+                                        <td>{{ field.name|highlight:field_tokens }}</td>
+                                        <td>{{ field.data_type|highlight:field_tokens }}</td>
+                                        <td>{{ field.is_nullable|highlight:field_tokens }}</td>
+                                        <td>
+                                            <a href="{% url 'field_detail' field.id %}" class="btn btn-primary btn-sm" style="font-size: 0.75rem; line-height: 1;">Ver detalhes</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        
+        {% if comments %}
+            <div class="card mb-2">
+                <div class="card-header bg-info text-dark d-flex align-items-center py-1">
+                    <h5 class="mb-0">Comentários</h5>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-light text-dark">{{ comments.count }}</span>
+                        <button type="button" id="toggleCommentsSection" class="btn btn-sm btn-primary">Ocultar</button>
+                    </div>
+                </div>
+                <div class="card-body py-2" id="commentsSectionBody">
+                    <div class="list-group">
+                        {% for comment in comments %}
+                            <div class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">{{ comment.user.username }}</h6>
+                                    <small>{{ comment.created_at|date:"d/m/Y H:i" }}</small>
+                                </div>
+                                <p class="mb-1">{{ comment.comment|highlight:comment_tokens|url_with_icons }}</p>
+                                <div class="small">
+                                    {% if comment.comment_type == 'TABLE' and comment.table %}
+                                        <span class="badge bg-secondary">{{ comment.table.database_connection.name }}</span>
+                                        <span class="badge bg-light text-dark">Tabela</span>
+                                        <span class="badge bg-primary">{{ comment.table.schema }}.{{ comment.table.name }}</span>
+                                        <a href="{% url 'table_detail' comment.table.id %}" class="btn btn-outline-primary btn-sm ms-1" style="font-size: 0.75rem; line-height: 1;">Ver detalhes</a>
+                                    {% elif comment.comment_type == 'FIELD' and comment.field %}
+                                        <span class="badge bg-secondary">{{ comment.field.table.database_connection.name }}</span>
+                                        <span class="badge bg-light text-dark">Campo</span>
+                                        <span class="badge bg-primary">{{ comment.field.table.schema }}.{{ comment.field.table.name }}</span>
+                                        <span class="badge bg-info">{{ comment.field.name }}</span>
+                                        <a href="{% url 'field_detail' comment.field.id %}" class="btn btn-outline-primary btn-sm ms-1" style="font-size: 0.75rem; line-height: 1;">Ver detalhes</a>
+                                    {% elif comment.comment_type == 'CONNECTION' and comment.connection %}
+                                        <span class="badge bg-secondary">{{ comment.connection.name }}</span>
+                                        <span class="badge bg-dark">Conexão</span>
+                                        <a href="{% url 'connection_detail' comment.connection.id %}" class="btn btn-outline-primary btn-sm ms-1" style="font-size: 0.75rem; line-height: 1;">Ver detalhes</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Cookie utility functions
+    function setCookie(name, value, days = 30) {
+        const expires = new Date();
+        expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+        document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+    }
+    
+    function getCookie(name) {
+        const nameEQ = name + "=";
+        const ca = document.cookie.split(';');
+        for(let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+    
+    // Form elements
+    const form = document.getElementById('advancedSearchForm');
+    const connectionCheckboxes = document.querySelectorAll('input[name="connections"]');
+    const selectedConnectionsText = document.getElementById('selectedConnectionsText');
+    const authorCheckboxes = document.querySelectorAll('input[name="comment_authors"]');
+    const selectedAuthorsText = document.getElementById('selectedAuthorsText');
+    
+    // Load saved form state from cookies
+    function loadFormState() {
+        // Load text inputs
+        const textInputs = form.querySelectorAll('input[type="text"]');
+        textInputs.forEach(input => {
+            const savedValue = getCookie(`advanced_search_${input.name}`);
+            if (savedValue !== null) {
+                input.value = decodeURIComponent(savedValue);
+            }
+        });
+        
+        // Load checkboxes (table_type, comment_type, connections, comment_authors)
+        const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            const savedValue = getCookie(`advanced_search_${checkbox.name}_${checkbox.value}`);
+            if (savedValue !== null) {
+                checkbox.checked = savedValue === 'true';
+            }
+        });
+        
+        updateConnectionsText();
+        updateAuthorsText();
+    }
+    
+    // Save form state to cookies
+    function saveFormState() {
+        // Save text inputs
+        const textInputs = form.querySelectorAll('input[type="text"]');
+        textInputs.forEach(input => {
+            setCookie(`advanced_search_${input.name}`, encodeURIComponent(input.value));
+        });
+        
+        // Save checkboxes
+        const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            setCookie(`advanced_search_${checkbox.name}_${checkbox.value}`, checkbox.checked);
+        });
+    }
+    
+    // Update connections dropdown text
+    function updateConnectionsText() {
+        const checkedConnections = Array.from(connectionCheckboxes).filter(cb => cb.checked);
+        const totalConnections = connectionCheckboxes.length;
+        
+        if (checkedConnections.length === 0) {
+            selectedConnectionsText.textContent = 'Nenhuma Conexão';
+        } else if (checkedConnections.length === totalConnections) {
+            selectedConnectionsText.textContent = 'Todas as Conexões';
+        } else if (checkedConnections.length === 1) {
+            const label = checkedConnections[0].parentElement.textContent.trim();
+            selectedConnectionsText.textContent = label;
+        } else {
+            selectedConnectionsText.textContent = `${checkedConnections.length} Conexões`;
+        }
+    }
+
+    // Update authors dropdown text
+    function updateAuthorsText() {
+        const checkedAuthors = Array.from(authorCheckboxes).filter(cb => cb.checked);
+        const totalAuthors = authorCheckboxes.length;
+        if (checkedAuthors.length === 0) {
+            selectedAuthorsText.textContent = 'Nenhum Autor';
+        } else if (checkedAuthors.length === totalAuthors) {
+            selectedAuthorsText.textContent = 'Todos os Autores';
+        } else if (checkedAuthors.length === 1) {
+            const label = checkedAuthors[0].parentElement.textContent.trim();
+            selectedAuthorsText.textContent = label;
+        } else {
+            selectedAuthorsText.textContent = `${checkedAuthors.length} Autores`;
+        }
+    }
+    
+    // Event listeners
+    form.addEventListener('input', saveFormState);
+    form.addEventListener('change', function(e) {
+        saveFormState();
+        if (e.target.name === 'connections') {
+            updateConnectionsText();
+        }
+        if (e.target.name === 'comment_authors') {
+            updateAuthorsText();
+        }
+    });
+    
+    // Toggle select/unselect all for connections
+    const toggleConnectionsAllBtn = document.getElementById('toggleConnectionsAll');
+    if (toggleConnectionsAllBtn) {
+        toggleConnectionsAllBtn.addEventListener('click', function() {
+            const allChecked = Array.from(connectionCheckboxes).every(cb => cb.checked);
+            connectionCheckboxes.forEach(cb => { cb.checked = !allChecked; });
+            updateConnectionsText();
+            saveFormState();
+        });
+    }
+    
+    // Toggle select/unselect all for authors
+    const toggleAuthorsAllBtn = document.getElementById('toggleAuthorsAll');
+    if (toggleAuthorsAllBtn) {
+        toggleAuthorsAllBtn.addEventListener('click', function() {
+            const allChecked = Array.from(authorCheckboxes).every(cb => cb.checked);
+            authorCheckboxes.forEach(cb => { cb.checked = !allChecked; });
+            updateAuthorsText();
+            saveFormState();
+        });
+    }
+    
+    // Prevent dropdowns from closing when clicking inside
+    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        menu.addEventListener('click', function(e) { e.stopPropagation(); });
+    });
+    
+    // Section collapse toggles
+    function setupSectionToggle(buttonId, bodyId) {
+        const btn = document.getElementById(buttonId);
+        const body = document.getElementById(bodyId);
+        if (!btn || !body) return;
+        btn.addEventListener('click', function() {
+            const isHidden = body.style.display === 'none';
+            body.style.display = isHidden ? '' : 'none';
+            btn.textContent = isHidden ? 'Ocultar' : 'Mostrar';
+        });
+    }
+    setupSectionToggle('toggleTablesSection', 'tablesSectionBody');
+    setupSectionToggle('toggleFieldsSection', 'fieldsSectionBody');
+    setupSectionToggle('toggleCommentsSection', 'commentsSectionBody');
+
+    // Initialize labels and load state
+    loadFormState();
+});
+</script>
+{% endblock %}

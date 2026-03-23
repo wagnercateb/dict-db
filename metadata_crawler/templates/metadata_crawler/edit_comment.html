@@ -1,0 +1,62 @@
+{% extends 'metadata_crawler/base.html' %}
+
+{% block title %}Editar Comentário - Metadados de Banco de Dados{% endblock %}
+
+{% block content %}
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2 class="mb-3">Editar Comentário</h2>
+            
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p class="text-muted mb-1">
+                        {% if comment.comment_type == 'TABLE' %}
+                            Comentário em <strong>{{ comment.table_schema }}.{{ comment.table_name }}</strong>
+                        {% elif comment.comment_type == 'FIELD' %}
+                            Comentário no campo <strong>{{ comment.field_name }}</strong> da tabela <strong>{{ comment.table_schema }}.{{ comment.table_name }}</strong>
+                        {% else %}
+                            Comentário na conexão <strong>{{ comment.connection.name }}</strong>
+                        {% endif %}
+                    </p>
+                    <p class="text-muted mb-0">Criado em {{ comment.created_at|date:"d/m/Y H:i" }}</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header bg-primary text-white py-1">
+                    <h5 class="mb-0">Editar Comentário</h5>
+                </div>
+                <div class="card-body py-2">
+                    <!-- Formulário de edição com CSRF; texto obrigatório -->
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.comment.label_tag }}
+                            {{ form.comment }}
+                            {% if form.comment.errors %}
+                                <div class="text-danger">
+                                    {{ form.comment.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-primary btn-sm">Salvar Alterações</button>
+                            {% if target_field %}
+                                <a href="{% url 'field_detail' target_field.id %}" class="btn btn-secondary btn-sm">Cancelar</a>
+                            {% elif target_table %}
+                                <a href="{% url 'table_detail' target_table.id %}" class="btn btn-secondary btn-sm">Cancelar</a>
+                            {% elif comment.connection %}
+                                <a href="{% url 'connection_detail' comment.connection.id %}" class="btn btn-secondary btn-sm">Cancelar</a>
+                            {% else %}
+                                <a href="{% url 'home' %}" class="btn btn-secondary btn-sm">Cancelar</a>
+                            {% endif %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+<!-- Edição de comentário: preserva alvo (conexão/tabela/view/campo) e validações. -->

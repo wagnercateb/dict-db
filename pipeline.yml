@@ -1,0 +1,25 @@
+# usar o mesmo nome do repositório e do produto
+name: dimac-colop-dict-db
+trigger: none
+pool:
+  name: CORP
+  demands: Agent.OS -equals Linux
+steps:
+  - task: Docker@0
+    displayName: 'Build an image'
+    inputs:
+      containerregistrytype: 'Container Registry'
+      # configurar com o Deinf, no 1o acesso, para conseguir acessar o Artifactory https://artifactory.bcnet.bcb.gov.br/ui/repos/tree/General/publicaveis-docker/
+      # repo:  https://tfs.bcnet.bcb.gov.br/tfs/LiaCollection/DESIG_JOBS/_git/teste-flask
+      # build: https://artifactory.bcnet.bcb.gov.br/artifactory/publicaveis-docker/desig/teste-flask
+      dockerRegistryConnection: 'publicaveis-docker-DESIG_JOBS'
+      imageName: 'desig/$(Build.Repository.Name):$(Build.BuildId)'
+      includeLatestTag: true
+
+  - task: Docker@0
+    displayName: 'Push an image'
+    inputs:
+      containerregistrytype: 'Container Registry'
+      dockerRegistryConnection: 'publicaveis-docker-DESIG_JOBS'
+      action: 'Push an image'
+      imageName: 'desig/$(Build.Repository.Name):$(Build.BuildId)'

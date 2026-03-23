@@ -1,0 +1,27 @@
+Goal: Change MetadataComment FKs from IDs to names, including database_connection_id in table FK.
+
+Summary of changes:
+- Model: MetadataComment now stores `table_schema`, `table_name`, `field_name` and keeps `connection` FK.
+- Migration 0006: Backfills new columns from `table_id`/`field_id` and rebuilds table with composite FK
+  `(connection_id, table_schema, table_name)` -> `TableMetadata(database_connection_id, schema, name)`.
+- Dropped columns: `table_id`, `field_id` from `metadata_crawler_metadatacomment`.
+
+Important notes:
+- Field FK by name is not enforced at DB level because `FieldMetadata` does not carry
+  `(database_connection_id, schema, table_name)` columns and SQLite requires parent keys to be unique.
+  Application logic populates `field_name` consistently; if DB-level enforcement is needed,
+  consider adding a uniqueness constraint to `FieldMetadata(name)` (global) or denormalizing
+  `FieldMetadata` to include table identity by names and creating a composite UNIQUE.
+
+Operational steps performed:
+1) Added new name columns and backfilled via SQL joins.
+2) Rebuilt the comment table to attach the composite table FK and removed id-based columns.
+3) Updated views/admin to use name-based fields for reads and saves.
+
+Validation:
+- Create TABLE comments on a table; comments are saved with connection/schema/name and listed correctly.
+- Create FIELD comments on a field; comments are saved with connection/schema/table_name/field_name and listed.
+
+Trade-offs:
+- TABLE comments enjoy DB-level FK integrity via composite names.
+- FIELD comments rely on application-level integrity pending schema changes to support composite FK.
