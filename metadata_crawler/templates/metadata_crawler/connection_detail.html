@@ -90,13 +90,11 @@ document.addEventListener('DOMContentLoaded', function() {
                                     {% if table.latest_comments %}
                                         <ul class="list-unstyled mb-0 small">
                                             {% for comm in table.latest_comments %}
-                                                <li class="text-muted border-bottom mb-1 pb-1">
-                                                    <strong>{{ comm.user.username }}:</strong> {{ comm.comment|truncatechars:100 }}
+                                                <li class="text-muted {% if not forloop.last %}border-bottom mb-1 pb-1{% endif %}">
+                                                    <strong>{{ comm.user.username }}:</strong> {{ comm.comment|url_with_icons }}
                                                 </li>
                                             {% endfor %}
                                         </ul>
-                                    {% else %}
-                                        <span class="text-muted small"></span>
                                     {% endif %}
                                 </td>
                                 <td>
@@ -107,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     {% endif %}
                                 </td>
                                 <td>
-                                    <a href="{% url 'table_detail' table.id %}" class="btn btn-primary btn-sm">Ver Detalhes</a>
+                                    <a href="{% url 'table_detail' table.id %}" class="btn btn-primary btn-sm">Detalhes</a>
                                 </td>
                             </tr>
                         {% endfor %}

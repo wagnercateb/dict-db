@@ -72,13 +72,11 @@ function copyShareUrl(){
                                                 {% if table.latest_comments %}
                                                     <ul class="list-unstyled mb-0 small">
                                                         {% for comm in table.latest_comments %}
-                                                            <li class="text-muted border-bottom mb-1 pb-1">
+                                                            <li class="text-muted {% if not forloop.last %}border-bottom mb-1 pb-1{% endif %}">
                                                                 <strong>{{ comm.user.username }}:</strong> {{ comm.comment|url_with_icons|truncatechars_html:100 }}
                                                             </li>
                                                         {% endfor %}
                                                     </ul>
-                                                {% else %}
-                                                    <span class="text-muted small"></span>
                                                 {% endif %}
                                             </td>
                                             <td>
