@@ -34,6 +34,7 @@ print(f"enviroment: {ENVIRONMENT}")
 SECRET_KEY = 'django-insecure-sq4z=cma)0=3+rzx-en-jpn0xzp%8e%&u%$*m_@(imm)j3-*_('
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# Triggering server reload to pick up templatetags
 DEBUG = True
 
 # em produção, add your production domain to CSRF_TRUSTED_ORIGINS and to ALLOWED_HOSTS:

@@ -1,6 +1,5 @@
 {% extends 'metadata_crawler/base.html' %}
 {% load highlight %}
-{% load external_links %}
 
 {% block title %}Pesquisa Avançada - Metadados{% endblock %}
 
@@ -231,7 +230,13 @@ function copyShareUrl(){
                                         </td>
                                         <td>{{ field.name|highlight:field_tokens }}</td>
                                         <td>{{ field.data_type|highlight:field_tokens }}</td>
-                                        <td>{{ field.is_nullable|highlight:field_tokens }}</td>
+                                        <td>
+                                            {% if field.is_nullable %}
+                                                <span class="badge bg-success">Sim</span>
+                                            {% else %}
+                                                <span class="badge bg-danger">Não</span>
+                                            {% endif %}
+                                        </td>
                                         <td>
                                             <a href="{% url 'field_detail' field.id %}" class="btn btn-primary btn-sm" style="font-size: 0.75rem; line-height: 1;">Ver detalhes</a>
                                         </td>

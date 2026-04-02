@@ -126,7 +126,13 @@ function copyShareUrl(){
                                             <td>{{ field.table.schema|highlight:field_tokens }}.{{ field.table.name|highlight:field_tokens }}</td>
                                             <td>{{ field.name|highlight:field_tokens }}</td>
                                             <td>{{ field.data_type|highlight:field_tokens }}</td>
-                                            <td>{{ field.is_nullable|highlight:field_tokens }}</td>
+                                            <td>
+                                                {% if field.is_nullable %}
+                                                    <span class="badge bg-success">Sim</span>
+                                                {% else %}
+                                                    <span class="badge bg-danger">Não</span>
+                                                {% endif %}
+                                            </td>
                                             <td>
                                                 <a href="{% url 'field_detail' field.id %}" class="btn btn-primary btn-sm">Ver Detalhes</a>
                                             </td>

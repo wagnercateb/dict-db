@@ -1,4 +1,5 @@
 {% extends 'metadata_crawler/base.html' %}
+{% load highlight %}
 
 {% block title %}{{ connection.name }} - Metadados de Banco de Dados{% endblock %}
 
@@ -135,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="d-flex justify-content-between align-items-start">
                         <div>
                             <div class="small text-muted">por {{ c.user.get_full_name|default:c.user.username }} em {{ c.created_at|date:"d/m/Y H:i" }}</div>
-                            <div>{{ c.comment }}</div>
+                            <div>{{ c.comment|url_with_icons }}</div>
                         </div>
                         <div class="ms-2">
                             {% if request.user == c.user %}
