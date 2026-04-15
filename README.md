@@ -1,20 +1,27 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+Para testar local:
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+- baixe o arquivo atualizado do sqlite usando o FileManager: https://dimac-colop-flaskdesig-jobs.cloud-p.bcnet.bcb.gov.br/filemanager/dados/dict-db
+- abra um prompt no VSCode e execute: wsl
+    - diretório linux: /c/Users/desig.cateb/Dados/Bacen/ProjetosTFS/desig-jobs__________BcCloud/dimac-colop-dict-db
+- copie o arquivo atualizado do sqlite para: C:\Users\desig.cateb\Dados\bacen\ProjetosTFS\desig-jobs__________BcCloud\dimac-colop-dict-db\
+- faça o build: docker build .
+- veja o hash da imagem criada: docker images
+- execute expondo a porta 5000 e mapeando o diretório corrente para /dados/dict-db: 
+        docker run -d 
+            -p 5000:5000  
+            -v /c/Users/desig.cateb/Dados/Bacen/ProjetosTFS/desig-jobs__________BcCloud/dimac-colop-dict-db/:/dados/dict-db hash-da-imagem
+- navegue: localhost:5000  
+- para debugar dentro do container:
+    - ver o container_id com: docker ps
+    - acesse o bash (ou o sh) do container: docker exec -it container_id bash
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+Para fechar o container:
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+- veja o número do container em execução: docker ps (-a lista também os que estão parados)
+- pare o container: docker stop hash-do-cotainer
+- apague este container: docker rm 1a6
+    - ou apague todos: docker rm -f $(docker ps -aq)
+- apague sua imagem se não for mais usar: docker rmi hash-da-imagem
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+
+

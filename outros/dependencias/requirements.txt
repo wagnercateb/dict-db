@@ -1,0 +1,6 @@
+pyodbc==5.3.0
+PyYAML==6.0.3
+regex==2026.4.4
+sqlparse==0.5.5
+tblib==3.2.2
+typing_extensions==4.15.0

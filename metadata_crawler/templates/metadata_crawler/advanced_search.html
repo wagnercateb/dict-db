@@ -183,7 +183,7 @@ function copyShareUrl(){
                                             {% endif %}
                                         </td>
                                         <td>
-                                            <a href="{% url 'table_detail' table.id %}" class="btn btn-primary btn-sm " style="font-size: 0.75rem; line-height: 1;">Ver detalhes</a>
+                                            <a href="{% url 'table_detail' table.id %}" class="btn btn-primary btn-sm " style="font-size: 0.75rem; line-height: 1;">detalhes</a>
                                         </td>
                                     </tr>
                                 {% endfor %}
@@ -238,7 +238,7 @@ function copyShareUrl(){
                                             {% endif %}
                                         </td>
                                         <td>
-                                            <a href="{% url 'field_detail' field.id %}" class="btn btn-primary btn-sm" style="font-size: 0.75rem; line-height: 1;">Ver detalhes</a>
+                                            <a href="{% url 'field_detail' field.id %}" class="btn btn-primary btn-sm" style="font-size: 0.75rem; line-height: 1;">detalhes</a>
                                         </td>
                                     </tr>
                                 {% endfor %}
@@ -272,17 +272,17 @@ function copyShareUrl(){
                                         <span class="badge bg-secondary">{{ comment.table.database_connection.name }}</span>
                                         <span class="badge bg-light text-dark">Tabela</span>
                                         <span class="badge bg-primary">{{ comment.table.schema }}.{{ comment.table.name }}</span>
-                                        <a href="{% url 'table_detail' comment.table.id %}" class="btn btn-outline-primary btn-sm ms-1" style="font-size: 0.75rem; line-height: 1;">Ver detalhes</a>
+                                        <a href="{% url 'table_detail' comment.table.id %}" class="btn btn-outline-primary btn-sm ms-1" style="font-size: 0.75rem; line-height: 1;">detalhes</a>
                                     {% elif comment.comment_type == 'FIELD' and comment.field %}
                                         <span class="badge bg-secondary">{{ comment.field.table.database_connection.name }}</span>
                                         <span class="badge bg-light text-dark">Campo</span>
                                         <span class="badge bg-primary">{{ comment.field.table.schema }}.{{ comment.field.table.name }}</span>
                                         <span class="badge bg-info">{{ comment.field.name }}</span>
-                                        <a href="{% url 'field_detail' comment.field.id %}" class="btn btn-outline-primary btn-sm ms-1" style="font-size: 0.75rem; line-height: 1;">Ver detalhes</a>
+                                        <a href="{% url 'field_detail' comment.field.id %}" class="btn btn-outline-primary btn-sm ms-1" style="font-size: 0.75rem; line-height: 1;">detalhes</a>
                                     {% elif comment.comment_type == 'CONNECTION' and comment.connection %}
                                         <span class="badge bg-secondary">{{ comment.connection.name }}</span>
                                         <span class="badge bg-dark">Conexão</span>
-                                        <a href="{% url 'connection_detail' comment.connection.id %}" class="btn btn-outline-primary btn-sm ms-1" style="font-size: 0.75rem; line-height: 1;">Ver detalhes</a>
+                                        <a href="{% url 'connection_detail' comment.connection.id %}" class="btn btn-outline-primary btn-sm ms-1" style="font-size: 0.75rem; line-height: 1;">detalhes</a>
                                     {% endif %}
                                 </div>
                             </div>

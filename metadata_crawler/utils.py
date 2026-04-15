@@ -33,7 +33,8 @@ class DatabaseCrawler:
             if self.runtime_username and self.runtime_password:
                 conn_str += f"UID={self.runtime_username};PWD={self.runtime_password};"
             else:
-                if ENVIRONMENT == 'windows' or ENVIRONMENT == 'docker-wsl':
+                #if ENVIRONMENT == 'windows' or ENVIRONMENT == 'docker-wsl':
+                if ENVIRONMENT == 'docker-wsl':
                     conn_str += "Trusted_Connection=yes;Integrated Security=SSPI;"
                 else:
                     conn_str += "Trusted_Connection=yes;"
@@ -140,16 +141,49 @@ class DatabaseCrawler:
                     schema_name, table_name
                 """
             elif self.connection.database_type == 'TERADATA':
+                # in Teradata’s DBC.TablesV (and other DBC dictionary views), the TableKind column indicates the type of object the row describes. It isn’t limited only to “table” vs “view”; it covers many kinds of objects stored in the system dictionary. Here’s a comprehensive list of possible TableKind values and what they represent (based on the official Teradata documentation):
+                # Value	Meaning (Object Type)
+                # A	Aggregate function
+                # B	Combined aggregate and ordered analytical function
+                # C	Table operator parser contract function
+                # D	JAR
+                # E	External stored procedure
+                # F	Standard function
+                # G	Trigger
+                # H	Instance or constructor method
+                # I	Join index
+                # J	Journal
+                # K	Foreign server object
+                # L	User-defined table operator
+                # M	Macro
+                # N	Hash index
+                # O	Table with No Primary Index (NoPI table)
+                # P	Stored procedure
+                # Q	Queue table
+                # R	Table function
+                # S	Ordered analytical function
+                # T	Table (regular table, either with primary index or partitioning)
+                # U	User-defined type (UDT)
+                # V	View
+                # X	Authorization (role/user/etc.)
+                # Y	GLOP set
+                # Z	UIF (User Installed File)
+                # 1	A DATASET schema object created by CREATE SCHEMA
+                # 2	Function alias object
+                # 3	Unbounded Array Framework (UAF) Time Series functions
+
+                # Note: Some values (especially newer ones like K, L, Y, Z, 1/2/3) may depend on your Teradata version and optional features; core objects like tables (T), views (V), macros (M), indexes (I, N), and procedures (P) are universally present.
+
                 tables_query = """
                 SELECT 
                     DatabaseName as schema_name,
                     TableName as table_name,
-                    CASE WHEN TableKind = 'T' THEN 'TABLE' ELSE 'VIEW' END as table_type
+                        CASE WHEN TableKind in ('O','T') THEN 'TABLE' ELSE 'VIEW' END as table_type
                 FROM 
                     DBC.TablesV
                 WHERE 
                     DatabaseName = ? AND
-                    (TableKind = 'T' OR TableKind = 'V')
+                        (TableKind in ('T', 'O', 'V'))
                 ORDER BY 
                     schema_name, table_name
                 """
@@ -234,23 +268,113 @@ class DatabaseCrawler:
                 elif self.connection.database_type == 'TERADATA':
                     columns_query = """
                     SELECT 
-                        ColumnName as COLUMN_NAME,
-                        ColumnType as DATA_TYPE,
-                        CASE WHEN Nullable = 'Y' THEN 1 ELSE 0 END as is_nullable,
-                        CASE WHEN ColumnConstraint = 'P' THEN 1 ELSE 0 END as is_primary_key,
-                        CASE WHEN ColumnConstraint = 'F' THEN 1 ELSE 0 END as is_foreign_key,
-                        '' as foreign_key_table,
-                        '' as foreign_key_column
-                    FROM 
-                        DBC.ColumnsV
-                    WHERE 
-                        DatabaseName = ? AND TableName = ?
-                    ORDER BY 
-                        ColumnId
+                            ColumnName AS COLUMN_NAME,
+
+                            /* Convert ColumnType code → descriptive data type name */
+                            CASE ColumnType
+                                WHEN 'I'  THEN 'INTEGER'
+                                WHEN 'I1' THEN 'BYTEINT'
+                                WHEN 'I2' THEN 'SMALLINT'
+                                WHEN 'I8' THEN 'BIGINT'
+                                WHEN 'D'  THEN 'DECIMAL'
+                                WHEN 'F'  THEN 'FLOAT'
+                                WHEN 'N'  THEN 'NUMBER'
+                                WHEN 'BO' THEN 'BOOLEAN'
+
+                                WHEN 'CV' THEN 'VARCHAR'
+                                WHEN 'CF' THEN 'CHAR'
+                                WHEN 'CO' THEN 'CLOB'
+                                WHEN 'LV' THEN 'LONG VARCHAR'
+                                WHEN 'LF' THEN 'LONG CHAR'
+
+                                WHEN 'UV' THEN 'VARGRAPHIC'
+                                WHEN 'UF' THEN 'GRAPHIC'
+                                WHEN 'UO' THEN 'JSON'
+
+                                WHEN 'DA' THEN 'DATE'
+                                WHEN 'TS' THEN 'TIMESTAMP'
+                                WHEN 'TZ' THEN 'TIME WITH TIME ZONE'
+                                WHEN 'SZ' THEN 'TIMESTAMP WITH TIME ZONE'
+                                WHEN 'AT' THEN 'INTERVAL DAY TO SECOND'
+                                WHEN 'YM' THEN 'INTERVAL YEAR TO MONTH'
+
+                                WHEN 'BV' THEN 'VARBYTE'
+                                WHEN 'BF' THEN 'BYTE'
+                                WHEN 'BO' THEN 'BLOB'
+                                WHEN 'XM' THEN 'XML'
+                                WHEN 'JN' THEN 'JSON'
+
+                                WHEN 'PD' THEN 'PERIOD(DATE)'
+                                WHEN 'PT' THEN 'PERIOD(TIME)'
+                                WHEN 'PS' THEN 'PERIOD(TIMESTAMP)'
+                                WHEN 'UT' THEN 'UDT'
+                                WHEN 'DT' THEN 'DISTINCT TYPE'
+
+                                ELSE ColumnType   /* fallback for any unknown codes */
+                            END AS DATA_TYPE,
+
+                            CASE WHEN Nullable = 'Y' THEN 1 ELSE 0 END AS is_nullable,
+                            CASE WHEN ColumnConstraint = 'P' THEN 1 ELSE 0 END AS is_primary_key,
+                            CASE WHEN ColumnConstraint = 'F' THEN 1 ELSE 0 END AS is_foreign_key,
+                            '' AS foreign_key_table,
+                            '' AS foreign_key_column
+
+                        FROM DBC.ColumnsV
+                        WHERE DatabaseName = ? AND TableName = ?
+                        ORDER BY ColumnId;
                     """
                     cursor.execute(columns_query, (schema_name, table_name))
-                
                 columns_data = cursor.fetchall()
+                
+                # Teradata ColumnType Codes and Descriptions
+                # Numeric Types
+                # Code     Meaning
+                # I        INTEGER (4-byte signed)
+                # I1       BYTEINT (1-byte signed)
+                # I2       SMALLINT (2-byte signed)
+                # I8       BIGINT (8-byte signed)
+                # F            FLOAT / REAL (4-byte)
+                # D            DECIMAL / NUMERIC (packed)
+                # N            NUMBER (ANSI)
+                # BO       BOOLEAN
+                # Character Types
+                # Code     Meaning
+                # CV       VARCHAR
+                # CF       CHAR / CHARACTER
+                # CO       CLOB
+                # LV       LONG VARCHAR
+                # LF       LONG CHAR
+                # Unicode / Graphic Types
+                # Code     Meaning
+                # UV       VARGRAPHIC
+                # UF       GRAPHIC
+                # UO       JSON (stored as Unicode object)
+                # MC       CHARACTER SET UNICODE (internal code used rarely)
+                # Date / Time Types
+                # Code     Meaning
+                # DA       DATE
+                # TS       TIMESTAMP
+                # TZ       TIME WITH TIME ZONE
+                # SZ       TIMESTAMP WITH TIME ZONE
+                # AT       INTERVAL DAY TO SECOND
+                # YM       INTERVAL YEAR TO MONTH
+                # Byte / Binary Types
+                # Code     Meaning
+                # BV       VARBYTE
+                # BF       BYTE / BYTE(n)
+                # BO       BLOB
+                # XM       XML
+                # JN       JSON
+                # PM       Parameterized JSON
+                # Other / Specialized Types
+                # Code     Meaning
+                # PD       PERIOD DATE
+                # PT       PERIOD TIME
+                # PS       PERIOD TIMESTAMP
+                # PM       TD_ANYTYPE (polymorphic parameter type)
+                # UT       User-defined Type (UDT)
+                # DT       Distinct Type
+                # UD       UDT (generic code in older versions)
                 
                 # Process columns
                 print (f'processando colunas da tabela {table.name}...')

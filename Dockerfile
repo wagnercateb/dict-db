@@ -17,8 +17,9 @@ RUN apt-get update
 # Configura cache Kerberos KCM conforme diretriz da BcCloud
 RUN sed -i "s/\[libdefaults\]/[libdefaults]\n    default_ccache_name = KCM:/g" /etc/krb5.conf || true
 
-RUN mkdir /dados
-RUN mkdir /dados/dict-db
+# não adianta criar diretórios de dados na imagem, o que será usado está no volume do kubernetes
+# RUN mkdir /dados
+# RUN mkdir /dados/dict-db
 
 # working directory for the project. Este será o ROOT DA APLICAÇÃO. 
 WORKDIR /app
