@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Lineage Viewer</title>
@@ -39,301 +40,302 @@
     }
   </style>
 </head>
+
 <body>
 
-<h3>Árvore de dependências</h3>
+  <h3>Árvore de dependências</h3>
 
-<label>Selecione o banco de dados:</label>
-<select id="datasetSelect"></select>
+  <label>Selecione o banco de dados:</label>
+  <select id="datasetSelect"></select>
 
-<br/>
-<label>Filtre e selecione a view:</label>
-<input id="filterInput" placeholder="Filtro de nome" />
-<br/>
-<select id="objectSelect" disabled></select>
+  <br />
+  <label>Filtre e selecione a view:</label>
+  <input id="filterInput" placeholder="Filtro de nome" />
+  <br />
+  <select id="objectSelect" disabled></select>
 
-<h3>Árvore</h3>
+  <h3>Árvore</h3>
 
-<!-- ✅ FILTER + OUTPUT SIDE BY SIDE -->
-<div id="outputWrapper">
-  <pre id="output">Waiting for selection...</pre>
-</div>
-
-
-<script>
-  const datasetSelect = document.getElementById('datasetSelect');
-  const objectSelect = document.getElementById('objectSelect');
-  const outputEl = document.getElementById('output');
-  const filterInput = document.getElementById('filterInput');
-
-  let lineageData = [];
-  let objectMap = new Map(); // object -> sources[]
-  let allObjects = [];
-
-  const norm = v => (v || '').trim().toLowerCase();
-
-  const buildUrl = path => `${window.location.origin}/${path}`;
+  <!-- ✅ FILTER + OUTPUT SIDE BY SIDE -->
+  <div id="outputWrapper">
+    <pre id="output">Waiting for selection...</pre>
+  </div>
 
 
-  function getUrlParams() {
-    const params = new URLSearchParams(window.location.search);
-    return {
-      db: norm(params.get('db')),
-      tbl: norm(params.get('tbl'))
-    };
-  }
+  <script>
+    const datasetSelect = document.getElementById('datasetSelect');
+    const objectSelect = document.getElementById('objectSelect');
+    const outputEl = document.getElementById('output');
+    const filterInput = document.getElementById('filterInput');
 
-  /**
-   * Extract first name (before first dot)
-   */
-  function getPrefix(name) {
-    return norm(name).split('.')[0];
-  }
+    let lineageData = [];
+    let objectMap = new Map(); // object -> sources[]
+    let allObjects = [];
 
-  /**
-   * LOAD FILE + PREP DATA
-   */
-  async function loadFileList() {
-    const res = await fetch(buildUrl('lineage.json'));
-    lineageData = await res.json();
+    const norm = v => (v || '').trim().toLowerCase();
 
-    objectMap.clear();
+    const buildUrl = path => `${window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1)}${path}`;
 
-    // Build map: object -> sources
-    lineageData.forEach(item => {
-      const obj = norm(item.object);
-      const sources = (item.sources || []).map(norm);
-      objectMap.set(obj, sources);
-    });
+    function getUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      return {
+        db: norm(params.get('db')),
+        tbl: norm(params.get('tbl'))
+      };
+    }
 
-    allObjects = [...objectMap.keys()].sort();
+    /**
+     * Extract first name (before first dot)
+     */
+    function getPrefix(name) {
+      return norm(name).split('.')[0];
+    }
 
-    // Extract unique prefixes
-    const prefixes = [...new Set(allObjects.map(getPrefix))].sort();
+    /**
+     * LOAD FILE + PREP DATA
+     */
+    async function loadFileList() {
+      const res = await fetch(buildUrl('lineage.json'));
+      lineageData = await res.json();
 
-    // Populate datasetSelect
-    datasetSelect.innerHTML = '';
-    prefixes.forEach((prefix, i) => {
-      const opt = document.createElement('option');
-      opt.value = prefix;
-      opt.textContent = prefix;
-      if (i === 0) opt.selected = true;
-      datasetSelect.appendChild(opt);
-    });
+      objectMap.clear();
 
-    // Trigger initial load
-    const { db, tbl } = getUrlParams();
+      // Build map: object -> sources
+      lineageData.forEach(item => {
+        const obj = norm(item.object);
+        const sources = (item.sources || []).map(norm);
+        objectMap.set(obj, sources);
+      });
 
-    // Try to select DB from URL, fallback to first
-    const selectedDb = prefixes.includes(db) ? db : prefixes[0];
+      allObjects = [...objectMap.keys()].sort();
 
-    datasetSelect.value = selectedDb;
+      // Extract unique prefixes
+      const prefixes = [...new Set(allObjects.map(getPrefix))].sort();
 
-    // Apply dataset filter
-    applyDatasetFilter(selectedDb, tbl);    
-  }
+      // Populate datasetSelect
+      datasetSelect.innerHTML = '';
+      prefixes.forEach((prefix, i) => {
+        const opt = document.createElement('option');
+        opt.value = prefix;
+        opt.textContent = prefix;
+        if (i === 0) opt.selected = true;
+        datasetSelect.appendChild(opt);
+      });
 
-  /**
-   * FILTER OBJECTS BY PREFIX
-   */
-  function applyDatasetFilter(prefix, tblFromUrl = null) {
-    const filtered = allObjects.filter(obj => obj.startsWith(prefix));
+      // Trigger initial load
+      const { db, tbl } = getUrlParams();
 
-    renderObjectDropdown(filtered);
+      // Try to select DB from URL, fallback to first
+      const selectedDb = prefixes.includes(db) ? db : prefixes[0];
 
-    objectSelect.disabled = false;
+      datasetSelect.value = selectedDb;
 
-    if (filtered.length > 0) {
-      let selectedObject = filtered[0];
+      // Apply dataset filter
+      applyDatasetFilter(selectedDb, tbl);
+    }
 
-      if (tblFromUrl) {
-        const match = filtered.find(o => o === tblFromUrl);
-        if (match) selectedObject = match;
+    /**
+     * FILTER OBJECTS BY PREFIX
+     */
+    function applyDatasetFilter(prefix, tblFromUrl = null) {
+      const filtered = allObjects.filter(obj => obj.startsWith(prefix));
+
+      renderObjectDropdown(filtered);
+
+      objectSelect.disabled = false;
+
+      if (filtered.length > 0) {
+        let selectedObject = filtered[0];
+
+        if (tblFromUrl) {
+          const match = filtered.find(o => o === tblFromUrl);
+          if (match) selectedObject = match;
+        }
+
+        objectSelect.value = selectedObject;
+        displayTree(selectedObject);
+      }
+    }
+
+    /**
+     * DROPDOWN RENDER
+     */
+    function renderObjectDropdown(list) {
+      objectSelect.innerHTML = '';
+
+      list.forEach((obj, i) => {
+        const opt = document.createElement('option');
+        opt.value = obj;
+        opt.textContent = obj;
+        if (i === 0) opt.selected = true;
+        objectSelect.appendChild(opt);
+      });
+
+      objectSelect.size = 1;
+    }
+
+    /**
+     * 🔥 LIVE FILTER (within selected dataset)
+     */
+    function applyFilter(value) {
+      const q = norm(value);
+      const currentPrefix = datasetSelect.value;
+
+      const filtered = allObjects.filter(o =>
+        o.startsWith(currentPrefix) && o.includes(q)
+      );
+
+      renderObjectDropdown(filtered);
+
+      objectSelect.size = q ? Math.min(8, filtered.length || 1) : 1;
+
+      if (filtered.length > 0) {
+        objectSelect.selectedIndex = 0;
+        displayTree(filtered[0]);
+      }
+    }
+
+    /**
+     * 🌳 SIMPLIFIED TREE
+     */
+    function buildTree(node, prefix = '', isLast = true, visited = new Set()) {
+      node = norm(node);
+
+      let out = '';
+
+      const branch = prefix ? (isLast ? '└─ ' : '├─ ') : '';
+      out += prefix + branch + node + '\n';
+
+      if (visited.has(node)) {
+        return out + prefix + '   (circular)\n';
       }
 
-      objectSelect.value = selectedObject;
-      displayTree(selectedObject);
-    }
-  }
+      visited.add(node);
 
-  /**
-   * DROPDOWN RENDER
-   */
-  function renderObjectDropdown(list) {
-    objectSelect.innerHTML = '';
+      const children = objectMap.get(node) || [];
+      const newPrefix = prefix + (isLast ? '   ' : '│  ');
 
-    list.forEach((obj, i) => {
-      const opt = document.createElement('option');
-      opt.value = obj;
-      opt.textContent = obj;
-      if (i === 0) opt.selected = true;
-      objectSelect.appendChild(opt);
-    });
+      children.forEach((child, i) => {
+        const last = i === children.length - 1;
 
-    objectSelect.size = 1;
-  }
+        // Only recurse if child exists as an object
+        if (objectMap.has(child)) {
+          out += buildTree(child, newPrefix, last, new Set(visited));
+        } else {
+          const branch = last ? '└─ ' : '├─ ';
+          out += newPrefix + branch + child + '\n';
+        }
+      });
 
-  /**
-   * 🔥 LIVE FILTER (within selected dataset)
-   */
-  function applyFilter(value) {
-    const q = norm(value);
-    const currentPrefix = datasetSelect.value;
-
-    const filtered = allObjects.filter(o =>
-      o.startsWith(currentPrefix) && o.includes(q)
-    );
-
-    renderObjectDropdown(filtered);
-
-    objectSelect.size = q ? Math.min(8, filtered.length || 1) : 1;
-
-    if (filtered.length > 0) {
-      objectSelect.selectedIndex = 0;
-      displayTree(filtered[0]);
-    }
-  }
-
-  /**
-   * 🌳 SIMPLIFIED TREE
-   */
-  function buildTree(node, prefix = '', isLast = true, visited = new Set()) {
-    node = norm(node);
-
-    let out = '';
-
-    const branch = prefix ? (isLast ? '└─ ' : '├─ ') : '';
-    out += prefix + branch + node + '\n';
-
-    if (visited.has(node)) {
-      return out + prefix + '   (circular)\n';
+      return out;
     }
 
-    visited.add(node);
-
-    const children = objectMap.get(node) || [];
-    const newPrefix = prefix + (isLast ? '   ' : '│  ');
-
-    children.forEach((child, i) => {
-      const last = i === children.length - 1;
-
-      // Only recurse if child exists as an object
-      if (objectMap.has(child)) {
-        out += buildTree(child, newPrefix, last, new Set(visited));
-      } else {
-        const branch = last ? '└─ ' : '├─ ';
-        out += newPrefix + branch + child + '\n';
-      }
-    });
-
-    return out;
-  }
-
-  function displayTree(objectName) {
-    outputEl.textContent = buildTree(objectName);
-    colorizeFirstWords('output');
-  }
+    function displayTree(objectName) {
+      outputEl.textContent = buildTree(objectName);
+      colorizeFirstWords('output');
+    }
 
 
 
 
-  function colorizeFirstWords(preElementId) {
-    const pre = document.getElementById(preElementId);
-    if (!pre) return;
+    function colorizeFirstWords(preElementId) {
+      const pre = document.getElementById(preElementId);
+      if (!pre) return;
 
-    const text = pre.textContent;
-    const lines = text.split('\n');
+      const text = pre.textContent;
+      const lines = text.split('\n');
 
-    const DISTINCT_LIGHT_COLORS = [
-      '#FFD6D6', // Light Red
-      '#FFF3B0', // Light Yellow
-      '#E8DCFF', // Light Violet
-      '#DFF5D8', // Light Green
-      '#D6F1FF', // Light Cyan
-      '#DDE6FF', // Light Blue
-      '#FFE8C2', // Light Orange
-      '#F5D9FF', // Light Magenta
-      '#CFF3E6', // Light Mint
-      '#FADADD'  // Light Rose (warmer, clearly different from red)
-    ];
+      const DISTINCT_LIGHT_COLORS = [
+        '#FFD6D6', // Light Red
+        '#FFF3B0', // Light Yellow
+        '#E8DCFF', // Light Violet
+        '#DFF5D8', // Light Green
+        '#D6F1FF', // Light Cyan
+        '#DDE6FF', // Light Blue
+        '#FFE8C2', // Light Orange
+        '#F5D9FF', // Light Magenta
+        '#CFF3E6', // Light Mint
+        '#FADADD'  // Light Rose (warmer, clearly different from red)
+      ];
 
-    // 1️⃣ Extract unique first words
-    const words = [];
-    const wordSet = new Set();
+      // 1️⃣ Extract unique first words
+      const words = [];
+      const wordSet = new Set();
 
-    for (const line of lines) {
-      const match = line.match(/^\s*[├│└─\s]*([a-zA-Z0-9_]+)/);
-      if (match) {
-        const word = match[1];
-        if (!wordSet.has(word)) {
-          wordSet.add(word);
-          words.push(word);
+      for (const line of lines) {
+        const match = line.match(/^\s*[├│└─\s]*([a-zA-Z0-9_]+)/);
+        if (match) {
+          const word = match[1];
+          if (!wordSet.has(word)) {
+            wordSet.add(word);
+            words.push(word);
+          }
         }
       }
-    }
 
-    // 2️⃣ Assign colors (cycling if > 10)
-    const colorMap = {};
-    words.forEach((word, index) => {
-      colorMap[word] = DISTINCT_LIGHT_COLORS[index % DISTINCT_LIGHT_COLORS.length];
-    });
+      // 2️⃣ Assign colors (cycling if > 10)
+      const colorMap = {};
+      words.forEach((word, index) => {
+        colorMap[word] = DISTINCT_LIGHT_COLORS[index % DISTINCT_LIGHT_COLORS.length];
+      });
 
-    // 3️⃣ Replace occurrences with highlighted spans
-    let html = pre.textContent;
+      // 3️⃣ Replace occurrences with highlighted spans
+      let html = pre.textContent;
 
-    for (const [word, color] of Object.entries(colorMap)) {
-      const regex = new RegExp(`\\b${word}\\b`, 'g');
-      html = html.replace(
-        regex,
-        `<span style="
+      for (const [word, color] of Object.entries(colorMap)) {
+        const regex = new RegExp(`\\b${word}\\b`, 'g');
+        html = html.replace(
+          regex,
+          `<span style="
           background-color: ${color};
           padding: 0 4px;
           border-radius: 4px;
           font-weight: 600;
         ">${word}</span>`
-      );
+        );
+      }
+
+      // 4️⃣ Render back as HTML (preserve formatting)
+      pre.innerHTML = html;
     }
 
-    // 4️⃣ Render back as HTML (preserve formatting)
-    pre.innerHTML = html;
-  }
 
 
 
+    /**
+     * EVENTS
+     */
+    datasetSelect.addEventListener('change', e => {
+      applyDatasetFilter(e.target.value);
+    });
 
-  /**
-   * EVENTS
-   */
-  datasetSelect.addEventListener('change', e => {
-    applyDatasetFilter(e.target.value);
-  });  
+    objectSelect.addEventListener('change', e => {
+      displayTree(e.target.value);
+    });
 
-  objectSelect.addEventListener('change', e => {
-    displayTree(e.target.value);
-  });
+    filterInput.addEventListener('input', e => {
+      applyFilter(e.target.value);
+    });
 
-  filterInput.addEventListener('input', e => {
-    applyFilter(e.target.value);
-  });
+    filterInput.addEventListener('blur', () => {
+      objectSelect.size = 1;
+    });
 
-  filterInput.addEventListener('blur', () => {
-    objectSelect.size = 1;
-  });
-
-  objectSelect.addEventListener('click', () => {
-    objectSelect.size = 1;
-  });
+    objectSelect.addEventListener('click', () => {
+      objectSelect.size = 1;
+    });
 
 
 
 
 
-  /**
-   * INIT
-   */
-  loadFileList();
-</script>
+    /**
+     * INIT
+     */
+    loadFileList();
+  </script>
 
 
 </body>
+
 </html>

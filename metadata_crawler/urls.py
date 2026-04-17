@@ -10,6 +10,7 @@ urlpatterns = [
     path('connection/<int:connection_id>/delete/', views.delete_connection, name='delete_connection'),
     path('test-connections/', views.test_connections, name='test_connections'),
     path('table/<int:table_id>/', views.table_detail, name='table_detail'),
+    path('lineage.json/', views.serve_lineage_json, name='serve_lineage_json'),
     path('field/<int:field_id>/', views.field_detail, name='field_detail'),
     path('search/advanced/', views.advanced_search, name='advanced_search'),
     path('search/', views.search_results, name='search_results'),

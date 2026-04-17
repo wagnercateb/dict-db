@@ -13,9 +13,13 @@ from .utilitarios import logger
 
 import traceback
 import os
+import json
 import pyodbc
 import platform
 import subprocess
+
+from django.conf import settings
+from django.http import FileResponse, Http404
 
 
 def home(request):
@@ -201,11 +205,19 @@ def table_detail(request, table_id):
     else:
         comment_form = MetadataCommentForm()
     
+    # Build the lookup key for the lineage viewer:
+    # db  = database name (first part before dot, lowercased), matches lineage.json prefix
+    # tbl = schema.name (three-part: db.schema.name), lowercased
+    lineage_db = (table.database_connection.database or '').strip().lower()
+    lineage_tbl = f"{lineage_db}.{table.schema}.{table.name}".lower()
+
     context = {
         'table': table,
         'fields': fields,
         'comments': comments,
         'comment_form': comment_form,
+        'lineage_db': lineage_db,
+        'lineage_tbl': lineage_tbl,
     }
     return render(request, 'metadata_crawler/table_detail.html', context)
 
@@ -919,3 +931,13 @@ def delete_connection(request, connection_id):
             'field_count': field_count,
             'comment_count': comment_count,
         })
+
+
+def serve_lineage_json(request):
+    """Serve o arquivo lineage.json da raiz do projeto."""
+    lineage_path = settings.BASE_DIR / 'lineage.json'
+    if not lineage_path.exists():
+        raise Http404("lineage.json não encontrado.")
+    with open(lineage_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    return JsonResponse(data, safe=False)

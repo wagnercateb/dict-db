@@ -77,6 +77,21 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </div>
 
+
+
+<!-- Dependencies Tree Section -->
+<div class="card mt-2">
+    <div class="card-header bg-primary text-white py-1">
+        <h5 class="mb-0">Árvore de Dependências</h5>
+    </div>
+    <div class="card-body py-2">
+        <div id="outputWrapper">
+            <pre id="output" class="bg-light p-3 rounded" style="max-height: 500px; overflow-y: auto;">Carregando árvore de dependências...</pre>
+        </div>
+    </div>
+</div>
+
+
 <div class="card">
     <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center py-1">
         <div class="d-flex align-items-center">
@@ -151,6 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </div>
 
+
 <div class="card mt-2">
     <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center py-1">
         <h5 class="mb-0">Comentários da Tabela/View</h5>
@@ -193,4 +209,155 @@ document.addEventListener('DOMContentLoaded', function() {
         {% endif %}
     </div>
 </div>
+
+<script>
+// Dependencies Tree Functionality
+const outputEl = document.getElementById('output');
+
+let lineageData = [];
+let objectMap = new Map(); // object -> sources[]
+
+const norm = v => (v || '').trim().toLowerCase();
+
+/**
+ * LOAD FILE + PREP DATA
+ */
+async function loadDependenciesForCurrentTable() {
+  try {
+    const res = await fetch('/lineage.json');
+    lineageData = await res.json();
+    
+    objectMap.clear();
+
+    // Build map: object -> sources
+    lineageData.forEach(item => {
+      const obj = norm(item.object);
+      const sources = (item.sources || []).map(norm);
+      objectMap.set(obj, sources);
+    });
+
+    // Get current table identifier
+    const currentTable = norm('{{ table.database_connection.database }}.{{ table.schema }}.{{ table.name }}');
+    
+    // Display dependency tree for current table
+    if (objectMap.has(currentTable)) {
+      displayTree(currentTable);
+    } else {
+      outputEl.textContent = 'Nenhuma informação de dependência encontrada para esta tabela.';
+    }
+  } catch (error) {
+    console.error('Error loading lineage data:', error);
+    outputEl.textContent = 'Erro ao carregar dados de dependências.';
+  }
+}
+
+/**
+ * 🌳 SIMPLIFIED TREE
+ */
+function buildTree(node, prefix = '', isLast = true, visited = new Set()) {
+  node = norm(node);
+
+  let out = '';
+
+  const branch = prefix ? (isLast ? '└─ ' : '├─ ') : '';
+  out += prefix + branch + node + '\n';
+
+  if (visited.has(node)) {
+    return out + prefix + '   (circular)\n';
+  }
+
+  visited.add(node);
+
+  const children = objectMap.get(node) || [];
+  const newPrefix = prefix + (isLast ? '   ' : '│  ');
+
+  children.forEach((child, i) => {
+    const last = i === children.length - 1;
+
+    // Only recurse if child exists as an object
+    if (objectMap.has(child)) {
+      out += buildTree(child, newPrefix, last, new Set(visited));
+    } else {
+      const branch = last ? '└─ ' : '├─ ';
+      out += newPrefix + branch + child + '\n';
+    }
+  });
+
+  return out;
+}
+
+function displayTree(objectName) {
+  outputEl.textContent = buildTree(objectName);
+  colorizeFirstWords('output');
+}
+
+function colorizeFirstWords(preElementId) {
+  const pre = document.getElementById(preElementId);
+  if (!pre) return;
+
+  const text = pre.textContent;
+  const lines = text.split('\n');
+
+  const DISTINCT_LIGHT_COLORS = [
+    '#FFD6D6', // Light Red
+    '#FFF3B0', // Light Yellow
+    '#E8DCFF', // Light Violet
+    '#DFF5D8', // Light Green
+    '#D6F1FF', // Light Cyan
+    '#DDE6FF', // Light Blue
+    '#FFE8C2', // Light Orange
+    '#F5D9FF', // Light Magenta
+    '#CFF3E6', // Light Mint
+    '#FADADD'  // Light Rose (warmer, clearly different from red)
+  ];
+
+  // 1️⃣ Extract unique first words
+  const words = [];
+  const wordSet = new Set();
+
+  for (const line of lines) {
+    const match = line.match(/^\s*[├│└─\s]*([a-zA-Z0-9_]+)/);
+    if (match) {
+      const word = match[1];
+      if (!wordSet.has(word)) {
+        wordSet.add(word);
+        words.push(word);
+      }
+    }
+  }
+
+  // 2️⃣ Assign colors (cycling if > 10)
+  const colorMap = {};
+  words.forEach((word, index) => {
+    colorMap[word] = DISTINCT_LIGHT_COLORS[index % DISTINCT_LIGHT_COLORS.length];
+  });
+
+  // 3️⃣ Replace occurrences with highlighted spans
+  let html = pre.textContent;
+
+  for (const [word, color] of Object.entries(colorMap)) {
+    const regex = new RegExp(`\\b${word}\\b`, 'g');
+    html = html.replace(
+      regex,
+      `<span style="
+      background-color: ${color};
+      padding: 0 4px;
+      border-radius: 4px;
+      font-weight: 600;
+    ">${word}</span>`
+    );
+  }
+
+  // 4️⃣ Render back as HTML (preserve formatting)
+  pre.innerHTML = html;
+}
+
+/**
+ * INIT
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  loadDependenciesForCurrentTable();
+});
+</script>
+
 {% endblock %}
