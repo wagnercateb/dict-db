@@ -9,6 +9,7 @@ from .models import TableMetadata, FieldMetadata, MetadataComment
 from django.db.models import Q
 
 from .utilitarios import logger, detect_runtime_environment
+from .lineage import update_lineage_files, list_accessible_databases
 
 ENVIRONMENT = detect_runtime_environment()
 
@@ -166,6 +167,52 @@ class DatabaseCrawler:
                     is_nullable=nullable,
                     is_primary_key=pk,
                 )
+
+    def _crawl_lineage(self, cursor):
+        """Atualiza lineage.json e modifiers.json para a conexao atual.
+
+        A extracao e best-effort: eventuais falhas nao interrompem o
+        rastreamento de metadados.
+        """
+        from django.conf import settings
+
+        db = (self.connection.database or '').strip()
+        lineage_path = str(getattr(settings, 'LINEAGE_JSON_PATH',
+                                   settings.BASE_DIR / 'lineage.json'))
+        modifiers_path = str(getattr(settings, 'MODIFIERS_JSON_PATH',
+                                     settings.BASE_DIR / 'modifiers.json'))
+        scan_all = getattr(settings, 'LINEAGE_SCAN_ALL_DATABASES', True)
+
+        try:
+            # Varre as rotinas de TODOS os bancos acessiveis do servidor para
+            # capturar modificacoes cross-database (SP em outro banco que faz
+            # INSERT/UPDATE/DELETE em tabelas deste banco).
+            databases = None
+            if scan_all:
+                try:
+                    databases = list_accessible_databases(cursor)
+                except Exception as db_list_err:
+                    logger.warning(
+                        "Nao foi possivel listar os bancos para varredura cross-database: %s",
+                        db_list_err,
+                    )
+                    databases = None
+
+            summary = update_lineage_files(
+                db, cursor, lineage_path, modifiers_path, databases=databases
+            )
+            logger.info(
+                "Linhagem atualizada para %s: %s views, %s rotinas com DML, "
+                "%s tabelas modificadas (bancos varridos: %s)",
+                db, summary.get('views'), summary.get('routines_with_dml'),
+                summary.get('tables_modified'),
+                len(databases) if databases else 1,
+            )
+        except Exception as lineage_err:
+            logger.error(
+                "Falha ao extrair linhagem/modificadores de %s: %s",
+                db, lineage_err,
+            )
 
     def crawl(self):
         """Crawl the database and extract metadata"""
@@ -459,6 +506,12 @@ class DatabaseCrawler:
                         foreign_key_table=foreign_key_table if foreign_key_table else None
                     )
             
+            # Extrai linhagem (dependencias de views) e modificadores DML
+            # (INSERT/SELECT INTO/UPDATE/DELETE) executados por funcoes e
+            # stored procedures, gravando lineage.json e modifiers.json.
+            if self.connection.database_type == 'MSSQL':
+                self._crawl_lineage(cursor)
+
             # Update last crawled timestamp
             self.connection.last_crawled = timezone.now()
             self.connection.save()

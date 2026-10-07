@@ -35,12 +35,20 @@ SECRET_KEY = 'django-insecure-sq4z=cma)0=3+rzx-en-jpn0xzp%8e%&u%$*m_@(imm)j3-*_(
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # Triggering server reload to pick up templatetags
-DEBUG = True
+DEBUG = False
 
 # em produção, add your production domain to CSRF_TRUSTED_ORIGINS and to ALLOWED_HOSTS:
-ALLOWED_HOSTS = ['dimac-colop-dict-dbdesig-jobs.cloud-p.bcnet.bcb.gov.br', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'dimac-colop-dict-dbdesig-jobs.cloud-p.bcnet.bcb.gov.br',
+    'votebem.org',
+    'www.votebem.org',
+    'localhost',
+    '127.0.0.1',
+]
 CSRF_TRUSTED_ORIGINS = [
-    "https://dimac-colop-dict-dbdesig-jobs.cloud-p.bcnet.bcb.gov.br"
+    "https://dimac-colop-dict-dbdesig-jobs.cloud-p.bcnet.bcb.gov.br",
+    "https://votebem.org",
+    "https://www.votebem.org",
 ]
 
 # Application definition
@@ -140,6 +148,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 STATIC_URL = 'static/'
+STATIC_ROOT = DADOS_PATH / 'staticfiles'
+
+# ---------------------------------------------------------------------------
+# Linhagem (dependencias de views) e modificadores DML
+# ---------------------------------------------------------------------------
+# Ao rastrear uma conexao MSSQL, varrer as rotinas (funcoes/SPs) de TODOS os
+# bancos acessiveis do servidor, para capturar modificacoes cross-database
+# (uma SP em outro banco que faz INSERT/UPDATE/DELETE em tabelas deste).
+# Desligue se a varredura completa for custosa no seu ambiente.
+LINEAGE_SCAN_ALL_DATABASES = True
+
+# Artefatos JSON gerados no rastreamento e servidos pela aplicacao.
+LINEAGE_JSON_PATH = BASE_DIR / 'lineage.json'
+MODIFIERS_JSON_PATH = BASE_DIR / 'modifiers.json'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

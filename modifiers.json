@@ -1,0 +1,3297 @@
+[
+  {
+    "table": "desig_d1_gera_top50.dbo.rel_basileia3_prudencial_201601_rascunho",
+    "modifiers": [
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GERAR_RELATORIO_BASILEIA_III_PRUDENCIAL_201601",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.@datas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.getDatabases",
+        "routine_type": "FUNCTION"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.getDatabasesSemestrais",
+        "routine_type": "FUNCTION"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.@errors",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.CommandExecute",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.@leanterior",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.OLD_GI_DLO_Consistencia_ListaEsperados_01",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.@leatual",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.OLD_GI_DLO_Consistencia_ListaEsperados_01",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.@resumo",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.Fn_LIM_Desuc_Resumo_Equipe",
+        "routine_type": "FUNCTION"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.@t1",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_DatasLimites_Entrega",
+        "routine_type": "FUNCTION"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_DatasLimites_Entrega_Ajustadas",
+        "routine_type": "FUNCTION"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_RelGabin_02",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_RelGabin_04",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_Ocorrencias_Unicad",
+        "routine_type": "FUNCTION"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.Ocorrencia_Unicad_MaisRecente_Anterior",
+        "routine_type": "FUNCTION"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.@t2",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_RelGabin_02",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.@tabauxiliar",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.OLD_GI_DLO_Consistencia_ListaEsperados_01",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.OLD_GI_DLO_Consistencia_ListaEsperados_01",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.@tabdatas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_ROSE_Processamento",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_ROSE_Processamento_1",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_ROSE_Processamento_2",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.@tabelaretornada",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.AlteracaoSegmentacaoPrudencial",
+        "routine_type": "FUNCTION"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.AlteracaoSegmentacaoPrudencial_OLD",
+        "routine_type": "FUNCTION"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_lista_esperados_recente",
+        "routine_type": "FUNCTION"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.@tbl",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_POPR_Inconsistencias_Cosif_Calcular_Loop_DEPRECATED",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.@temp_datas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.PJUR1_PROCESSA_DATAS",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.PJUR1_PROCESSA_DATAS_bkp",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.ang_gi_dlo_inconsistencias_batimentodoc4020",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_CriaMovimentoMensal",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.ang_gi_dlo_movimentomes",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_CriaMovimentoMensal",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_CriaMovimentoMensal",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_CriaMovimentoMensal",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.ang_gi_dlo_movimentomes_saldos",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_CriaMovimentoMensal",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.ang_temp_gi_dlo_movimentomes_rpsd",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_CriaMovimentoMensal",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.apagar_margens_negativas_12_meses",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.Avisar_MargemNegativas12Meses",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.apagar_teste2",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.sp_teste2",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.cad_controle_carrega_emanormalidade_desuc",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.CAD_Carrega_EmAnormalidade_Desuc",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.CAD_Carrega_EmAnormalidade_Desuc",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.cad_cooperativas_segmentacao_temp",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.CAD_Carrega_EmAnormalidade_Desuc",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.cad_emanormalidade_desuc",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.CAD_Carrega_EmAnormalidade_Desuc",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.cap_sgs_solvencia",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.CAP_SGS_SOLVENCIA_SP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.CAP_SGS_SOLVENCIA_SP",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.commandlog",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.CommandExecute",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.CommandExecute",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.ddr_indicios_dispensa_indevida",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_Envia_Email_Indicios",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.ddr_indicios_dispensa_indevida_historico",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_Envia_Email_Indicios",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dli_batimento_cosif",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLI_Carrega_Batimento_Cosif",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dli_cod_contas_lim2",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLI_Atualizar_Plano_de_contas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dli_saldos",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLi_Carga_das_Tabelas_Limites2",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_acimavariacaohorizaceita",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Variacao_Grande_DLO",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_acimavariacaohorizaceita_historico",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Variacao_Grande_DLO",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_dadoscetipparacriticadlo4541",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLO",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLO",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLO_BAK20210222",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLO_BAK20210222",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLOteste",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLOteste",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_dadoscetipparacriticadlo4542",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLO",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLO",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLO_BAK20210222",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLO_BAK20210222",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLOteste",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLOteste",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_dadoscetipparacriticadlo_log",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLO",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLO_BAK20210222",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLOteste",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_detalhamento_lec",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosLECParaCriticas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_detalhamentos_algumas_contas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Carrega_detalhamentos_algumas_contas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_gedoc_chamadas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_AvisarSeCarregaGedoc",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_VerificarSeCarregaGedoc",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_historico_remessa_documentos_filtrado",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Atualiza_Historico_Remessas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_ifs_excluidas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Envio_DLO_Exclusao_IFs",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_novasifs",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Envio_DLO_Novas_IFs",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_novosinstrumentosdecapital",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Instrumentos_de_capital",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_popr_inconsistencias_cosif_calc_um_codigo",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_POPR_Inconsistencias_Cosif_paramEmTabela_SP_teste",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_POPR_Inconsistencias_Cosif_paramEmTabela_SP_teste",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_popr_inconsistencias_cosif_calc_um_codigo_historico",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_POPR_Inconsistencias_Cosif_paramEmTabela_SP_teste",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_popr_inconsistencias_cosif_calculadas_final",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_POPR_Inconsistencias_Cosif_Calcular_DEPRECATED",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_POPR_Inconsistencias_Cosif_Calcular_DEPRECATED",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_popr_inconsistencias_cosif_calculadas_historico",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_POPR_Inconsistencias_Cosif_Calcular_DEPRECATED",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_popr_inconsistencias_cosif_erros",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_POPR_Inconsistencias_Cosif_Calcular_DEPRECATED",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_POPR_Inconsistencias_Cosif_Calcular_DEPRECATED",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_popr_inconsistencias_cosif_param_usados_historico",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_POPR_Inconsistencias_Cosif_Calcular_DEPRECATED",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_popr_inconsistencias_cosif_temp",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_POPR_Inconsistencias_Cosif_paramEmTabela_SP_teste",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_popr_inconsistencias_dlo_historico",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_POPR_Inconsistencias_Cosif_paramEmTabela_SP_teste",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_popr_inconsistencias_dlo_temp",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_POPR_Inconsistencias_Cosif_paramEmTabela_SP_teste",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_s5_operacoes_vedadas",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Operacoes_Vedadas_S5",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_saldos_historico1",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Carga_Tabela_SaldosAlterados",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Carga_Tabela_SaldosAlterados",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_segmento_regulacao",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Segmento_Regulacao_CarregaTabelas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_segmento_regulacao_controle_opcao_s5",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Opcao_S5_nao_permitida",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_segmento_regulacao_controle_opcao_s5_por_conglomerados",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Opcao_S5_nao_permitida_por_conglomerado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_sinalizacoes_bcsim_oper_vedadas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Carrega_Sinalizacoes_Op_Vedadas_BcSIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlp_saldos",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_DLP_Saldos",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlp_saldos_temp",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_DLP_Saldos",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_DLP_Saldos",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.escopo_mef",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_MEF_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gerarcenarios_ppa_dados",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GerarCenarios_PPA",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_ddr_atrasos_controle_proc",
+    "modifiers": [
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_Envia_Email_Atrasos",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_ddr_atrasos_notificacoes",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_Envia_Email_Atrasos",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_Envia_Email_Atrasos",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_ddr_entrega_em_atraso",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_Carrega_Entrega_em_Atraso",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_ddr_notificacoes_atraso_enviadas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_Envia_Email_Atrasos",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_ddr_notificacoes_dispensaindevida_enviadas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_Envia_Email_Indicios",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_batimento_cosif",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Carrega_Batimento_Cosif",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Carrega_Batimento_Cosif",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Carrega_Batimento_Cosif_BKP04022021",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Carrega_Batimento_Cosif_BKP20220314",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_doc_cosif_comparado",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Carrega_Batimento_Cosif",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Carrega_Batimento_Cosif",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Carrega_Batimento_Cosif_BKP04022021",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Carrega_Batimento_Cosif_BKP20220314",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Carrega_Batimento_Cosif_BKP20220314",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_ifs_contumazes",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Atualiza_Contumazes",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Atualiza_Contumazes",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_ifs_ematraso",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.OLD_GI_DLO_Carrega_Tabela_IFs_EmAtraso",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_inconsistencias_batimentodoc4020",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_01_CriaMovimentoDiario",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_01_CriaMovimentoDiario_206171",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_inconsistencias_controle_proc",
+    "modifiers": [
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_01_CriaMovimentoDiario",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_01_CriaMovimentoDiario_206171",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_08_AtualizaTabelas",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_95_Reprocessamento",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_99_VerificacaoErros",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_inconsistencias_enviadas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Atualiza_EmailsEnviados",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_inconsistencias_identificadas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_08_AtualizaTabelas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_inconsistencias_naoenviadas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_07_EliminaExcecoes",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_inconsistencias_reiteradas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_98_Reiteracoes",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_inconsistencias_resumo",
+    "modifiers": [
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Atualiza_EmailsEnviados",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_08_AtualizaTabelas",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_08_AtualizaTabelas",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_95_Reprocessamento",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_95_Reprocessamento",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_98_Reiteracoes",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_99_VerificacaoErros",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_lista_esperados_exclusoes",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.OLD_GI_DLO_Consistencia_ListaEsperados_01",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.OLD_GI_DLO_Consistencia_ListaEsperados_01",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_lista_esperados_inclusoes",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.OLD_GI_DLO_Consistencia_ListaEsperados_01",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.OLD_GI_DLO_Consistencia_ListaEsperados_01",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.OLD_GI_DLO_Consistencia_ListaEsperados_01",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_movimentodia",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_01_CriaMovimentoDiario",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_01_CriaMovimentoDiario",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_01_CriaMovimentoDiario",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_01_CriaMovimentoDiario_206171",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_01_CriaMovimentoDiario_206171",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_01_CriaMovimentoDiario_206171",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_96_Simulacao",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_96_Simulacao",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_99_VerificacaoErros",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_movimentodia_historico",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_CriaHistoricoMovimentoDiario",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_CriaHistoricoMovimentoDiario",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_movimentodia_inclusaomanual",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_99_VerificacaoErros",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_movimentodia_rose",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_09_ROSE",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_movimentodia_saldos",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_01_CriaMovimentoDiario",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_01_CriaMovimentoDiario_206171",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_movimentodia_saldos_historico",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_CriaHistoricoMovimentoDiario",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_CriaHistoricoMovimentoDiario",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_notificacoes_ifsnovas_enviadas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Envia_Email_Cnpj_Definitivo",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_rose_identificadas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_09_ROSE",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_variacoes_historico",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Variacoes",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_variacoes_identificadas",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Variacoes",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Variacoes",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_dlo_variacoes_resumo_if_analise",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Variacoes",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Variacoes",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_ger_controle_proc_criticas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_Criticas_Gerais",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_ger_diario_ocorrencias",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Envia_Email_Cnpj_Definitivo",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_rose_log_passoapasso",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_ROSE_Gera_Oscilacoes",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_rose_processamentos",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_ROSE_Gera_Oscilacoes",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_unicad_detalhe",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.X_GI_Unicad_Prepara_Email_Area_Responsabilidade",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_unicad_resumo",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.X_GI_Unicad_Prepara_Email_Area_Responsabilidade",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.X_GI_Unicad_Prepara_Email_Area_Responsabilidade",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_ativototal_maisrecente",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Tabelas_Portal",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_bcsim_simxdata",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Carrega_Sinalizacoes_Op_Vedadas_BcSIM",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinaliz_AlteraAbordagemPOPR",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinaliz_Desenq_LCR",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Diarias_BcSIM",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Exp_GrupoEcon_BcSIM",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Exp_GrupoEcon_BcSIM",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_DescartaSinalizacoesViaParametros",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_compararsaldoscosifdlo_tbl",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.Avisar_SaldosDLOxCosif",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_CompararSaldosCosifDLO",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_desenq_acima1ano_desuc",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Grava_Resumo_DESUC",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_desenq_autorizadaate3anos_desuc",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Grava_Resumo_DESUC",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_doc_data_limite",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Docs_Data_Limite",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Docs_Data_Limite",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_evolucao_ib",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Tabelas_Portal",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_evolucao_ib_diario",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Tabelas_Portal",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_evolucao_parcelas_pre",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Tabelas_Portal",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_parametrosdiversosdetalhes",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_DescartaSinalizacoesViaParametros",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_ReprocessaRWAOPADViaParametros",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_parcelaspre_media_atividade",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Grava_Media_ParcelasPRE",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_parcelaspre_mediana_atividade",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Grava_Mediana_ParcelasPRE",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_parcelaspre_mediana_atividade_diario",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Grava_Mediana_ParcelasPRE_Diario",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_pl_negativo_desuc",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Grava_Resumo_DESUC",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_popr_bia_tunel_base",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_BIA_TUNEL_CRIA_BASE",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_posicaoatual_limites",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.x_LIM_Carrega_Sinalizacoes_SIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_posicaoatual_limites_bcsim",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Diarias_BcSIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_resumo_desenquadramentos_desuc",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Grava_Resumo_DESUC",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Grava_Resumo_DESUC",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_resumo_desenquadramentos_desuc_equipe",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Grava_Resumo_DESUC",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Grava_Resumo_DESUC",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_sinalizacoes_bcsim_abordagem_popr",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinaliz_AlteraAbordagemPOPR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_sinalizacoes_bcsim_desenquadramentos",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Diarias_BcSIM",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Diarias_BcSIM",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Diarias_BcSIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_sinalizacoes_bcsim_exp_grupoeconomico",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Exp_GrupoEcon_BcSIM",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Exp_GrupoEcon_BcSIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_sinalizacoes_bcsim_lcr_minimo",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinaliz_Desenq_LCR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_sinalizacoes_sim_desenquadramentos",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.x_LIM_Carrega_Sinalizacoes_SIM",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.x_LIM_Carrega_Sinalizacoes_SIM",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.x_LIM_Carrega_Sinalizacoes_SIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.lim_sinalizacoes_sim_exp_clientes",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.x_LIM_Carrega_Sinalizacoes_Exp_Clientes_SIM",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.x_LIM_Carrega_Sinalizacoes_Exp_Clientes_SIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.numdocsentreguesumaif",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.AtualizaNumDocsEntreguesPorIF",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.AtualizaNumDocsEntreguesPorIF",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.rel_basileia3_prudencial_201601",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GERAR_RELATORIO_BASILEIA_III_PRUDENCIAL_201601",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GERAR_RELATORIO_BASILEIA_III_PRUDENCIAL_201601",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.rel_basileia3_prudencial_201601_rascunho",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GERAR_RELATORIO_BASILEIA_III_PRUDENCIAL_201601",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GERAR_RELATORIO_BASILEIA_III_PRUDENCIAL_201601",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GERAR_RELATORIO_BASILEIA_III_PRUDENCIAL_201601",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_MEF_SB3_PRUDENCIAL_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_MEF_SB3_PRUDENCIAL_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_MEF_SB3_PRUDENCIAL_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.rel_basileia3_prudencial_201601_saldos",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_MEF_SB3_PRUDENCIAL_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_MEF_SB3_PRUDENCIAL_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.scr_count_foc_por_database",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SCR_REGISTRA_TAMANHO_SCR_FOC_POR_DATABASE",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.scr_dlo_dest_capital_vinculada",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SCR_DLO_DEST_CAPITAL_VINCULADA_PROCEDURE",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SCR_DLO_DEST_CAPITAL_VINCULADA_PROCEDURE",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.scr_dlo_dest_capital_vinculada_atualizacao",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SCR_DLO_DEST_CAPITAL_VINCULADA_PROCEDURE",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.scr_dlo_dest_capital_vinculada_historico",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SCR_DLO_DEST_CAPITAL_VINCULADA_PROCEDURE",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.situacoes_monitoradas_dados_diaci_corac_diarios_tabela",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.Situacoes_Monitoradas_Dados_DIACI_CORAC_CarregaTabelas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.situacoes_monitoradas_dados_diaci_corac_tabela",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.Situacoes_Monitoradas_Dados_DIACI_CORAC_CarregaTabelas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.situacoes_monitoradas_lec_ind_tabela",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.Situacoes_Monitoradas_Dados_DIACI_CORAC_CarregaTabelas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.situacoes_monitoradas_metadados_diaci_corac_tabela",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.Situacoes_Monitoradas_Dados_DIACI_CORAC_CarregaTabelas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.slv_cod_contas",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_CONTAS_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.slv_contas_fpr",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_CONTAS_FPR_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.slv_escopo_total",
+    "modifiers": [
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_ESCOPO_DEPOSIT_TAKER_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.slv_fpr_credito",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_FPR_CREDITO_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_FPR_CREDITO_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.slv_grupos_fpr",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_GRUPOS_FPR_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.slv_mapa_capital_ind",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_MEF_MAPA_CAPITAL_IND_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.slv_mapa_capital_ind_cadastro",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_MEF_MAPA_CAPITAL_IND_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_MEF_MAPA_CAPITAL_IND_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_MEF_MAPA_CAPITAL_IND_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.slv_mapa_capital_multiplicadores",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_MEF_MAPA_CAPITAL_MULTIPLICADORES_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.slv_mef",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_MEF_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.slv_mef_dados_planilha",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_MEF_MAPA_CAPITAL_IND_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.slv_mef_dados_planilha_capital",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_MEF_DADOS_PLANILHA_CAPITAL_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.slv_mef_detalhe",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_MEF_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.slv_rwa_fatores_constantes_mapa",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_MEF_RWA_AJUSTADO_MAPA_PRUDENCIAL_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_MEF_RWA_FATORES_CONSTANTES_MAPA_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.slv_sb3_prudencial",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_MEF_SB3_PRUDENCIAL_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.slv_waterfall_valores",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.SLV_WATERFALL_VALORES_ATUALIZAR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.tbl_log_dlo_carga_das_tabelas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_DLP_Saldos",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp1a_cetipparacritica4541",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLO",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLO_BAK20210222",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp1a_cetipparacritica5451",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLOteste",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp1b_cetipparacritica4541",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLO",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLO_BAK20210222",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp1b_cetipparacritica5451",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLOteste",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_4010_entregues",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Coops_Nao_RPC_Sem_DLO",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Coops_Nao_RPC_Sem_DLO",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_assemelhadasdeconglomerados",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Opcao_S5_nao_permitida_por_conglomerado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_assemelhadasdecongpossiveisgruposiieiii",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Opcao_S5_nao_permitida_por_conglomerado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_avisar_falta_conta_2201",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.Avisar_Falta_Conta_2201",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_avisar_falta_conta_lec_2201",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.Avisar_Falta_Conta_LEC_2201",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_avisar_regerar_2061",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.Avisar_regerar_2061",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_avisar_s5_indevido",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.Avisar_S5_indevido",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_bcsim_proc1",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Diarias_BcSIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_bcsim_proc10",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Diarias_BcSIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_bcsim_proc2",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Diarias_BcSIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_bcsim_proc3",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Diarias_BcSIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_bcsim_proc4",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Diarias_BcSIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_bcsim_proc6",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Diarias_BcSIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_bcsim_proc7",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Diarias_BcSIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_bcsim_proc9",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Diarias_BcSIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_cad_emanormalidade_desuc",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.CAD_Carrega_EmAnormalidade_Desuc",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.CAD_Carrega_EmAnormalidade_Desuc",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_cnpj_definitivo_com_destinatario",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Envia_Email_Cnpj_Definitivo",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_cnpj_definitivo_identificado",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Envia_Email_Cnpj_Definitivo",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Envia_Email_Cnpj_Definitivo",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_cnpjsdelideresdeconglomerados",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Opcao_S5_nao_permitida_por_conglomerado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_conglomeradosvedados_ifseassemelhadas",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Opcao_S5_nao_permitida_por_conglomerado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_congpossiveisgrupoii_semassemelhadasvetadas",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Opcao_S5_nao_permitida_por_conglomerado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_congpossiveisgrupoiii_semassemelhadasvetadas",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Opcao_S5_nao_permitida_por_conglomerado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_congpossiveisgruposiieiii_ifsmaisassemelhadas",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Opcao_S5_nao_permitida_por_conglomerado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_congpossiveisgruposiieiii_soifs",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Opcao_S5_nao_permitida_por_conglomerado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_conta_cosif",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_POPR_Inconsistencias_Cosif_paramEmTabela_SP_teste",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_contas_dlo_incluidas",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_POPR_Inconsistencias_Cosif_paramEmTabela_SP_teste",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_contas_dlo_nao_incluidas_no_popr",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_POPR_Inconsistencias_Cosif_paramEmTabela_SP_teste",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_critica_a_justificar",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Justifica_Criticas_Para_S5",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_dados_para_email",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Coops_Nao_RPC_Sem_DLO",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_dados_popr",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_POPR_Inconsistencias_Cosif_paramEmTabela_SP_teste",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_ddr_indicios_datas_maiormenor",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_Envia_Email_Indicios",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_ddr_indicios_dispensa_indevida",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_Envia_Email_Indicios",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_Envia_Email_Indicios",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_ddr_indicios_excluidos_porprazo",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_Envia_Email_Indicios",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_ddr_nova_dispensa_indevida",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_Envia_Email_Indicios",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_ddr_novos_eventos",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_Envia_Email_Atrasos",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_ddr_novos_eventos_notificacao",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_Envia_Email_Atrasos",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_Envia_Email_Atrasos",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_ddr_posicao_entrega",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_Envia_Email_Atrasos",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_ddr_saldos_d0d1d2",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_ROSE_Indicios_Erro",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_ddr_saldos_d2",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_ROSE_Indicios_Erro",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_ddr_selecionados",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_ROSE_Indicios_Erro",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_ddr_variacoes",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_ROSE_Indicios_Erro",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_ddr_variacoes_selecionadas",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_ROSE_Indicios_Erro",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_divergencias_resumo_detalhe",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_99_VerificacaoErros",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_dli_faltou_gerar",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLi_Avisar_Faltou_Gerar_2062",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_dlo_dadoscetipparacriticadlo4541_sem_gravames",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLO",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_dlo_docssubststatus41",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Carga_Tabela_SaldosAlterados",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_dlo_docssubststatus42",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Carga_Tabela_SaldosAlterados",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_dlo_docssubststatus43",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Carga_Tabela_SaldosAlterados",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_dlo_novosinstrumentosdecapital",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Instrumentos_de_capital",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_dlo_semdocsmaisantigo1",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Carga_Tabela_SaldosAlterados",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_dlo_semdocsmaisantigo2",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Carga_Tabela_SaldosAlterados",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_dlo_semdocsmaisantigo3",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Carga_Tabela_SaldosAlterados",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_dlo_sinalizacoes_oper_vedadas1",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Carrega_Sinalizacoes_Op_Vedadas_BcSIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_dlo_sinalizacoes_oper_vedadas2",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Carrega_Sinalizacoes_Op_Vedadas_BcSIM",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Carrega_Sinalizacoes_Op_Vedadas_BcSIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_dlo_valores_atual_anter",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Variacoes",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_dlos_nao_gerados_s5",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_DLOs_Nao_Gerados_S5",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_drm_documento_batimento1",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DRM_Inconsistencias_Cosif_paramEmTabela",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_drm_documento_batimento1_1",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DRM_Inconsistencias_Cosif_paramEmTabela",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_drm_documento_batimento2",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DRM_Inconsistencias_Cosif_paramEmTabela",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_drm_documento_batimento3",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DRM_Inconsistencias_Cosif_paramEmTabela",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_drm_documentos_entregues",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DRM_Inconsistencias_Cosif_paramEmTabela",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_drm_step1",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DRM_Inconsistencias_Cosif_paramEmTabela",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_erro_resumo",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_99_VerificacaoErros",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_gar",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLO",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_geradossemlec",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.Avisar_Falta_Conta_LEC_2201",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_gi_dlo_batimento_cosif_ips",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Carrega_Batimento_Cosif",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_gi_dlo_errosconsistencia",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_Criticas_Gerais",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_02_CriticasGerais",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_03_CriticasPoprBia",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_04_CriticasPoprAsa",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_05_CriticasPoprAsa2",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_06_CriticasPepr",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_07_EliminaExcecoes",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_gi_dlo_movimentodia",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Variacoes",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_gi_dlo_movimentodia_cosif",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_01_CriaMovimentoDiario",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_01_CriaMovimentoDiario_206171",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_gi_dlo_movimentodia_ddr",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_01_CriaMovimentoDiario",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_01_CriaMovimentoDiario_206171",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_gi_dlo_movimentodia_rpsd",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_01_CriaMovimentoDiario",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_01_CriaMovimentoDiario_206171",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_gi_dlo_simulacaoconsistencia",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_96_Simulacao",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_gi_dlo_simulacaoselecao",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_96_Simulacao",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_ifs_sem_segmentacao_prudencial",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_IFs_sem_segmentacao_prudencial",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_ifsdeconglomeradosvedados",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Opcao_S5_nao_permitida_por_conglomerado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_ifsforadogrupoiii",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Opcao_S5_nao_permitida_por_conglomerado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_ifsliderescongpruelegiveisaogrupoii",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Opcao_S5_nao_permitida_por_conglomerado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_ifsmaisassemelhadasdecongpossiveisgruposiieiii",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Opcao_S5_nao_permitida_por_conglomerado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_inconsistencias_corrigidas",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_99_VerificacaoErros",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_inconsistencias_inclusaomanual",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_99_VerificacaoErros",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_inconsistencias_movimentodia",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_96_Simulacao",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_99_VerificacaoErros",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_inconsistencias_naosanadas",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_99_VerificacaoErros",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_inconsistencias_reiteracao",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_98_Reiteracoes",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_98_Reiteracoes",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_inconsistencias_reiteracao_erros",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_98_Reiteracoes",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_insere_gravames",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLO",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_insere_gravames_pz",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLO",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_integrantesdeconglomeradoselegiveisaogrupoii",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Opcao_S5_nao_permitida_por_conglomerado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_liderescongpruelegiveisaogrupoiii",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Opcao_S5_nao_permitida_por_conglomerado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_lideresdecongpossiveisgruposiieiii_soifs",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Opcao_S5_nao_permitida_por_conglomerado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_lideresdecongvedados_porexclusao",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Opcao_S5_nao_permitida_por_conglomerado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_lim_atributo_desenq",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Grava_Resumo_DESUC",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_lim_falta_codigo_bcpessoa_sim",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Diarias_BcSIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_lim_falta_subunidade_sim",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.x_LIM_Carrega_Sinalizacoes_SIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_lim_falta_subunidade_sim_exp_cliente",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.x_LIM_Carrega_Sinalizacoes_Exp_Clientes_SIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_lim_falta_subunidade_sim_exp_grupoeconomico",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Exp_GrupoEcon_BcSIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_lim_ifs_desenq",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Grava_Resumo_DESUC",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_lim_media_poratividade",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Grava_Media_ParcelasPRE",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_lim_mediana_poratividade",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Grava_Mediana_ParcelasPRE",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Grava_Mediana_ParcelasPRE_Diario",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_lim_reenquadramentos_bcsim",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Diarias_BcSIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_lim_reenquadramentos_sim",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.x_LIM_Carrega_Sinalizacoes_SIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_lim_universo_desenq",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Grava_Resumo_DESUC",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_opcaopors5",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_Opcao_S5_nao_permitida_por_conglomerado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_regimesnaoencerrados",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_RegimesNaoEncerrados",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_regimesnaoiniciados",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_RegimesNaoIniciados",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_screntregues",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.Avisar_Falta_Conta_LEC_2201",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_sinalizacoesgrupoacriar",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinalizacoes_Exp_GrupoEcon_BcSIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.temp_unicad_areas_todas",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.X_GI_Unicad_Prepara_Email_Area_Responsabilidade",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.tempdatabaseseseusultimodiaparaprocessar",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLO",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLO_BAK20210222",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_PreparaDadosCetipParaCriticasDLOteste",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.tmp_cad",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.ATUALIZA_var_externa_capital_tb_2",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.values",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Carga_Tabela_SaldosAlterados",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_POPR_Inconsistencias_Cosif_Calcular_DEPRECATED",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_registro_cnpj_definitivo",
+    "modifiers": [
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Envia_Email_Cnpj_Definitivo",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.ti_controle_rotina_noturna",
+    "modifiers": [
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_08_AtualizaTabelas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.ti_log_processamento_matinal_generica",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.MonitorarTabelas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "smixdata.dbo.smixdata",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.x_LIM_Carrega_Sinalizacoes_Exp_Clientes_SIM",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.x_LIM_Carrega_Sinalizacoes_Exp_Clientes_SIM",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.x_LIM_Carrega_Sinalizacoes_SIM",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  }
+]

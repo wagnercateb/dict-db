@@ -16,7 +16,7 @@
                         {% elif comment.comment_type == 'FIELD' %}
                             Comentário no campo <strong>{{ comment.field_name }}</strong> da tabela <strong>{{ comment.table_schema }}.{{ comment.table_name }}</strong>
                         {% else %}
-                            Comentário na conexão <strong>{{ comment.connection.name }}</strong>
+                            Comentário na conexão <strong>{{ comment.connection.database }}</strong>
                         {% endif %}
                     </p>
                     <p class="text-muted mb-0">Criado em {{ comment.created_at|date:"d/m/Y H:i" }}</p>

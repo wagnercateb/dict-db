@@ -31,7 +31,7 @@ class Metadata_Crawler_Config(AppConfig):
 
         try:
             # Check if default DB connection exists
-            if not DatabaseConnection.objects.filter(name='Default Connection').exists():
+            if not DatabaseConnection.objects.filter(database='Default Connection').exists():
                 # ✅ This runs only if environment is fully ready
                 username, password = autenticar_usuario()
 

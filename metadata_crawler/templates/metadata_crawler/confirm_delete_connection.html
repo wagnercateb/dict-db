@@ -1,6 +1,6 @@
 {% extends 'metadata_crawler/base.html' %}
 
-{% block title %}Confirmar Exclusão - {{ connection.name }}{% endblock %}
+{% block title %}Confirmar Exclusão - {{ connection.database }}{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center">
@@ -10,7 +10,7 @@
         <h4 class="mb-0">Confirmar Exclusão da Conexão</h4>
       </div>
       <div class="card-body py-2">
-        <p>Você está prestes a excluir a conexão <strong>{{ connection.name }}</strong>.</p>
+        <p>Você está prestes a excluir a conexão <strong>{{ connection.database }}</strong>.</p>
         <ul>
           <li><strong>Tabelas/Views a remover:</strong> {{ table_count }}</li>
           <li><strong>Campos a remover:</strong> {{ field_count }}</li>

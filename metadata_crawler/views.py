@@ -24,7 +24,7 @@ from django.http import FileResponse, Http404
 
 def home(request):
     """Página inicial com busca e lista de conexões"""
-    connections = DatabaseConnection.objects.all().order_by('name').prefetch_related('comments__user')
+    connections = DatabaseConnection.objects.all().order_by('database').prefetch_related('comments__user')
     search_form = SearchForm()
     context = {
         'connections': connections,
@@ -933,11 +933,22 @@ def delete_connection(request, connection_id):
         })
 
 
-def serve_lineage_json(request):
-    """Serve o arquivo lineage.json da raiz do projeto."""
-    lineage_path = settings.BASE_DIR / 'lineage.json'
-    if not lineage_path.exists():
-        raise Http404("lineage.json não encontrado.")
-    with open(lineage_path, 'r', encoding='utf-8') as f:
+def _serve_json_file(path):
+    """Lê e serve um arquivo JSON (Path)."""
+    if not path.exists():
+        raise Http404(f"{path.name} não encontrado.")
+    with open(path, 'r', encoding='utf-8') as f:
         data = json.load(f)
     return JsonResponse(data, safe=False)
+
+
+def serve_lineage_json(request):
+    """Serve o arquivo lineage.json (dependências de views)."""
+    path = getattr(settings, 'LINEAGE_JSON_PATH', settings.BASE_DIR / 'lineage.json')
+    return _serve_json_file(path)
+
+
+def serve_modifiers_json(request):
+    """Serve o arquivo modifiers.json (DML por tabela)."""
+    path = getattr(settings, 'MODIFIERS_JSON_PATH', settings.BASE_DIR / 'modifiers.json')
+    return _serve_json_file(path)

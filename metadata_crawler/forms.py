@@ -10,9 +10,8 @@ logger.info("This was logged from forms.py module")
 class DatabaseConnectionForm(forms.ModelForm):
     class Meta:
         model = DatabaseConnection
-        fields = ['name', 'database_type', 'server', 'database', 'username']
+        fields = ['database_type', 'server', 'database', 'username']
         labels = {
-            'name': 'Nome da Conexão',
             'database_type': 'Tipo de Banco de Dados',
             'server': 'Servidor',
             'database': 'Banco de Dados',
@@ -89,7 +88,7 @@ class AdvancedSearchForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # Populate connection choices dynamically
-        connection_choices = [(str(conn.id), conn.name) for conn in DatabaseConnection.objects.all()]
+        connection_choices = [(str(conn.id), conn.database) for conn in DatabaseConnection.objects.all()]
         self.fields['connections'].choices = connection_choices
         # Select all connections by default
         self.fields['connections'].initial = [choice[0] for choice in connection_choices]

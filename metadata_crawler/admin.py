@@ -4,8 +4,8 @@ from .models import DatabaseConnection, TableMetadata, FieldMetadata, MetadataCo
 
 @admin.register(DatabaseConnection)
 class DatabaseConnectionAdmin(admin.ModelAdmin):
-    list_display = ('name', 'server', 'database', 'last_crawled')
-    search_fields = ('name', 'server', 'database')
+    list_display = ('server', 'database', 'last_crawled')
+    search_fields = ('server', 'database')
     readonly_fields = ('created_at', 'updated_at', 'last_crawled')
 
 
@@ -34,11 +34,11 @@ class MetadataCommentAdmin(admin.ModelAdmin):
     
     def get_commented_object(self, obj):
         if obj.comment_type == 'TABLE' and obj.connection and obj.table_schema and obj.table_name:
-            return f"{obj.connection.name}:{obj.table_schema}.{obj.table_name}"
+            return f"{obj.connection.database}:{obj.table_schema}.{obj.table_name}"
         elif obj.comment_type == 'FIELD' and obj.connection and obj.table_schema and obj.table_name and obj.field_name:
-            return f"{obj.connection.name}:{obj.table_schema}.{obj.table_name}.{obj.field_name}"
+            return f"{obj.connection.database}:{obj.table_schema}.{obj.table_name}.{obj.field_name}"
         elif obj.connection:
-            return f"{obj.connection.name}"
+            return f"{obj.connection.database}"
         return ""
     
     get_commented_object.short_description = 'Object'

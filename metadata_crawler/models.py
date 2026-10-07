@@ -14,7 +14,6 @@ class DatabaseConnection(models.Model):
         ('MSSQL', 'Microsoft SQL Server'),
         ('TERADATA', 'Teradata')
     ]
-    name = models.CharField(max_length=100, unique=True)
     database_type = models.CharField(max_length=20, choices=DATABASE_TYPE_CHOICES)
     server = models.CharField(max_length=100)
     database = models.CharField(max_length=100)
@@ -25,7 +24,7 @@ class DatabaseConnection(models.Model):
     last_crawled = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.name} ({self.database_type})"
+        return f"{self.database} ({self.database_type})"
 
 
 
@@ -99,10 +98,10 @@ class MetadataComment(models.Model):
     def __str__(self):
         # Representação legível considerando a nova estrutura baseada em nomes
         if self.comment_type == 'TABLE' and self.connection and self.table_schema and self.table_name:
-            return f"Comment on {self.connection.name}:{self.table_schema}.{self.table_name}"
+            return f"Comment on {self.connection.database}:{self.table_schema}.{self.table_name}"
         elif self.comment_type == 'FIELD' and self.connection and self.table_schema and self.table_name and self.field_name:
-            return f"Comment on {self.connection.name}:{self.table_schema}.{self.table_name}.{self.field_name}"
+            return f"Comment on {self.connection.database}:{self.table_schema}.{self.table_name}.{self.field_name}"
         elif self.connection:
-            return f"Comment on {self.connection.name}"
+            return f"Comment on {self.connection.database}"
         else:
             return "Comment"

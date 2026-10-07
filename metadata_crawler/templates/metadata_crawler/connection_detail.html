@@ -1,7 +1,7 @@
 {% extends 'metadata_crawler/base.html' %}
 {% load highlight %}
 
-{% block title %}{{ connection.name }} - Metadados de Banco de Dados{% endblock %}
+{% block title %}{{ connection.database }} - Metadados de Banco de Dados{% endblock %}
 
 {% block content %}
 <script>
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <div class="d-flex justify-content-between align-items-center mb-2">
-    <h2>{{ connection.name }}</h2>
+    <h2>{{ connection.database }}</h2>
     <div>
         {% if request.session.can_add_connection %}
         <a href="{% url 'crawl_database' connection.id %}" class="btn btn-success btn-sm">Rastrear Metadados</a>

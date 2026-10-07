@@ -172,7 +172,7 @@ function copyShareUrl(){
                             <tbody>
                                 {% for table in tables %}
                                     <tr>
-                                        <td><span class="badge bg-secondary">{{ table.database_connection.name }}</span></td>
+                                        <td><span class="badge bg-secondary">{{ table.database_connection.database }}</span></td>
                                         <td>{{ table.schema|highlight:table_tokens }}</td>
                                         <td>{{ table.name|highlight:table_tokens }}</td>
                                         <td>
@@ -219,7 +219,7 @@ function copyShareUrl(){
                             <tbody>
                                 {% for field in fields %}
                                     <tr>
-                                        <td><span class="badge bg-secondary">{{ field.table.database_connection.name }}</span></td>
+                                        <td><span class="badge bg-secondary">{{ field.table.database_connection.database }}</span></td>
                                         <td>
                                             {% if field.table.type == 'TABLE' %}
                                                 <span class="badge bg-success me-1">TABLE</span>
@@ -269,18 +269,18 @@ function copyShareUrl(){
                                 <p class="mb-1">{{ comment.comment|highlight:comment_tokens|url_with_icons }}</p>
                                 <div class="small">
                                     {% if comment.comment_type == 'TABLE' and comment.table %}
-                                        <span class="badge bg-secondary">{{ comment.table.database_connection.name }}</span>
+                                        <span class="badge bg-secondary">{{ comment.table.database_connection.database }}</span>
                                         <span class="badge bg-light text-dark">Tabela</span>
                                         <span class="badge bg-primary">{{ comment.table.schema }}.{{ comment.table.name }}</span>
                                         <a href="{% url 'table_detail' comment.table.id %}" class="btn btn-outline-primary btn-sm ms-1" style="font-size: 0.75rem; line-height: 1;">detalhes</a>
                                     {% elif comment.comment_type == 'FIELD' and comment.field %}
-                                        <span class="badge bg-secondary">{{ comment.field.table.database_connection.name }}</span>
+                                        <span class="badge bg-secondary">{{ comment.field.table.database_connection.database }}</span>
                                         <span class="badge bg-light text-dark">Campo</span>
                                         <span class="badge bg-primary">{{ comment.field.table.schema }}.{{ comment.field.table.name }}</span>
                                         <span class="badge bg-info">{{ comment.field.name }}</span>
                                         <a href="{% url 'field_detail' comment.field.id %}" class="btn btn-outline-primary btn-sm ms-1" style="font-size: 0.75rem; line-height: 1;">detalhes</a>
                                     {% elif comment.comment_type == 'CONNECTION' and comment.connection %}
-                                        <span class="badge bg-secondary">{{ comment.connection.name }}</span>
+                                        <span class="badge bg-secondary">{{ comment.connection.database }}</span>
                                         <span class="badge bg-dark">Conexão</span>
                                         <a href="{% url 'connection_detail' comment.connection.id %}" class="btn btn-outline-primary btn-sm ms-1" style="font-size: 0.75rem; line-height: 1;">detalhes</a>
                                     {% endif %}

@@ -65,7 +65,7 @@ function copyShareUrl(){
                                 <tbody>
                                     {% for table in tables %}
                                         <tr>
-                                            <td>{{ table.database_connection.name }}</td>
+                                            <td>{{ table.database_connection.database }}</td>
                                             <td>{{ table.schema|highlight:table_tokens }}</td>
                                             <td>{{ table.name|highlight:table_tokens }}</td>
                                             <td class="table-comment-col d-none">
@@ -120,7 +120,7 @@ function copyShareUrl(){
                                 <tbody>
                                     {% for field in fields %}
                                         <tr>
-                                            <td>{{ field.table.database_connection.name }}</td>
+                                            <td>{{ field.table.database_connection.database }}</td>
                                             <td>{{ field.table.schema|highlight:field_tokens }}.{{ field.table.name|highlight:field_tokens }}</td>
                                             <td>{{ field.name|highlight:field_tokens }}</td>
                                             <td>{{ field.data_type|highlight:field_tokens }}</td>
@@ -165,13 +165,13 @@ function copyShareUrl(){
                                             Comentário em <a href="{% url 'field_detail' comment.field.id %}">{{ comment.field.table.schema|highlight:comment_tokens }}.{{ comment.field.table.name|highlight:comment_tokens }}.{{ comment.field.name|highlight:comment_tokens }}</a>
                                             <span class="badge bg-secondary ms-1">Campo</span>
                                         {% elif comment.comment_type == 'TABLE' %}
-                                            Comentário em {{ comment.connection.name }}:{{ comment.table_schema|highlight:comment_tokens }}.{{ comment.table_name|highlight:comment_tokens }}
+                                            Comentário em {{ comment.connection.database }}:{{ comment.table_schema|highlight:comment_tokens }}.{{ comment.table_name|highlight:comment_tokens }}
                                             <span class="badge bg-primary ms-1">Tabela</span>
                                         {% elif comment.comment_type == 'FIELD' %}
-                                            Comentário em {{ comment.connection.name }}:{{ comment.table_schema|highlight:comment_tokens }}.{{ comment.table_name|highlight:comment_tokens }}.{{ comment.field_name|highlight:comment_tokens }}
+                                            Comentário em {{ comment.connection.database }}:{{ comment.table_schema|highlight:comment_tokens }}.{{ comment.table_name|highlight:comment_tokens }}.{{ comment.field_name|highlight:comment_tokens }}
                                             <span class="badge bg-secondary ms-1">Campo</span>
                                         {% else %}
-                                            Comentário na conexão <a href="{% url 'connection_detail' comment.connection.id %}">{{ comment.connection.name }}</a>
+                                            Comentário na conexão <a href="{% url 'connection_detail' comment.connection.id %}">{{ comment.connection.database }}</a>
                                             <span class="badge bg-dark ms-1">Conexão</span>
                                         {% endif %}
                                         por {{ comment.user.username }}

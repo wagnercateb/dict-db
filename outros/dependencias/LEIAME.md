@@ -18,6 +18,27 @@
     - obs.: objetos são acrescentados ou atualizados mas não apagados
 
 
+# Modificadores DML (INSERT / SELECT INTO / UPDATE / DELETE)
+
+- o mesmo `extract.py` também cria/atualiza `modifiers.json`, que documenta
+  quais comandos DML afetam cada tabela e em qual função/stored procedure
+- varre as rotinas de TODOS os bancos acessíveis do servidor (para capturar
+  modificações cross-database, ex.: `INSERT INTO OUTRO_BANCO..tabela`)
+- formato (agrupado por tabela alvo):
+    {
+        "table": "reprebh.dbo.cosif_contas_finais",
+        "modifiers": [
+            {
+                "command": "INSERT",
+                "routine": "reprebh.dbo.Atualiza_COSIF_Contas_Finais",
+                "routine_type": "PROCEDURE"
+            }
+        ]
+    }
+- obs.: tabelas são acrescentadas ou atualizadas mas não apagadas
+- detalhes de implementação e produção: docs/lineage_modifiers.md
+
+
 # Consulta de dependências
 
 - requer que o arquivo lineage.json esteja gravado no diretório do arquivo dependencias.html
