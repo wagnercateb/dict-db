@@ -110,10 +110,77 @@ class DatabaseCrawler:
             logger.info(f"conn_str: {conn_str}")
     
 
+    def _emulation_enabled(self):
+        """Habilita emulacao de rastreamento (somente ambientes de desenvolvimento).
+
+        Controlado por CRAWL_EMULATE; desligado por padrao para nunca afetar producao.
+        """
+        return os.getenv('CRAWL_EMULATE', 'false').strip().lower() in ('1', 'true', 'yes', 'on')
+
+    def _emulated_crawl(self):
+        """Emula um rastreamento bem-sucedido quando o banco real nao esta acessivel.
+
+        Mantem os metadados ja existentes (ex.: snapshot de producao no SQLite) e,
+        se a conexao ainda nao tiver metadados, gera um conjunto sintetico minimo
+        para que a interface continue navegavel no ambiente de desenvolvimento.
+        """
+        existing = TableMetadata.objects.filter(database_connection=self.connection)
+        if not existing.exists():
+            self._generate_synthetic_metadata()
+
+        self.connection.last_crawled = timezone.now()
+        self.connection.save()
+
+        return {
+            'tables_count': TableMetadata.objects.filter(database_connection=self.connection, type='TABLE').count(),
+            'views_count': TableMetadata.objects.filter(database_connection=self.connection, type='VIEW').count(),
+            'fields_count': FieldMetadata.objects.filter(table__database_connection=self.connection).count(),
+            'emulated': True,
+        }
+
+    def _generate_synthetic_metadata(self):
+        """Cria metadados sinteticos deterministicos para a emulacao em dev."""
+        specs = [
+            ('TABELA_EXEMPLO', 'TABLE', [
+                ('ID', 'INT', False, True),
+                ('NOME', 'VARCHAR', True, False),
+                ('DT_CRIACAO', 'DATETIME', True, False),
+            ]),
+            ('VW_EXEMPLO', 'VIEW', [
+                ('ID', 'INT', True, False),
+                ('NOME', 'VARCHAR', True, False),
+            ]),
+        ]
+        for name, table_type, fields in specs:
+            table = TableMetadata.objects.create(
+                database_connection=self.connection,
+                schema='dbo',
+                name=name,
+                type=table_type,
+            )
+            for fname, ftype, nullable, pk in fields:
+                FieldMetadata.objects.create(
+                    table=table,
+                    name=fname,
+                    data_type=ftype,
+                    is_nullable=nullable,
+                    is_primary_key=pk,
+                )
+
     def crawl(self):
         """Crawl the database and extract metadata"""
         try:
             conn = self.connect()
+        except Exception as connect_err:
+            if self._emulation_enabled():
+                logger.warning(
+                    f"CRAWL_EMULATE ativo: emulando rastreamento de {self.connection} "
+                    f"apos falha de conexao: {connect_err}"
+                )
+                return self._emulated_crawl()
+            raise Exception(f"Erro ao rastrear banco de dados: {str(connect_err)}")
+
+        try:
             cursor = conn.cursor()
             
             # Clear existing metadata for this connection
