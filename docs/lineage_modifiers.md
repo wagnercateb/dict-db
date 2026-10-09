@@ -59,7 +59,10 @@ Agrupado por tabela alvo:
 - `command`: `INSERT`, `SELECT INTO`, `UPDATE` ou `DELETE`.
 - `routine`: função/stored procedure que executa o comando.
 - `routine_type`: `PROCEDURE` ou `FUNCTION`.
-- Chave de merge: `table`.
+- Chave de merge: `table`. Diferente de `lineage.json`, os modificadores da
+  mesma tabela são **acumulados** entre rastreamentos (deduplicados por
+  `command`/`routine`), pois bancos diferentes podem gravar na mesma tabela e
+  cada conexão enxerga apenas parte do servidor.
 
 ### Comandos reconhecidos
 
@@ -76,8 +79,13 @@ Observações de parsing:
 - `banco..tabela` (esquema omitido) é normalizado para `banco.dbo.tabela`.
 - Nomes não qualificados são resolvidos para o banco da própria rotina;
   referências de 3 partes vão para o banco alvo.
-- CTEs e tabelas temporárias (`#temp`) são ignoradas.
-- SQL dinâmico (`EXEC('INSERT ...')`) **não** é capturado (o texto é removido).
+- CTEs e tabelas temporárias (`#temp`) e variáveis de tabela (`@tabela`) são
+  ignoradas.
+- **SQL dinâmico é capturado**: os literais usados em `EXEC('...')` /
+  `sp_executesql N'...'` são desembrulhados recursivamente (até 3 níveis), de
+  modo que `SET @sql = 'DELETE FROM dbo.T'; EXEC(@sql)` registra o `DELETE`.
+  Palavras-chave que aparecem isoladas em trechos concatenados (ex.:
+  `'INSERT INTO ' + @tabela`) são descartadas para não virar tabela.
 
 ### Modificações cross-database
 
@@ -119,8 +127,9 @@ Na página de detalhes (`/table/<id>/`):
 - **Tabela**: a seção chama-se **"Modificadores (comandos DML)"** e lista, em
   uma tabela, o comando, a função/stored procedure e o tipo. A árvore de
   dependências não é exibida (não se aplica a tabelas).
-- **View**: a seção continua **"Árvore de Dependências"** (árvore recursiva de
-  `lineage.json`) e, abaixo, a lista de modificadores.
+- **View**: a seção chama-se **"Árvore de Dependências"** (árvore recursiva de
+  `lineage.json`). Views **não** exibem a lista de modificadores, pois o conceito
+  de comandos DML que gravam na tabela não se aplica a uma view.
 
 A interface busca `/modifiers.json` e faz o *match* pela chave
 `banco.esquema.tabela` em minúsculas.

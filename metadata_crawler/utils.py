@@ -1,6 +1,7 @@
 import pyodbc
 import os
 import platform
+import re
 from .models import DatabaseConnection, TableMetadata, FieldMetadata
 from django.utils import timezone
 from .models import TableMetadata, FieldMetadata, MetadataComment
@@ -549,31 +550,55 @@ class DatabaseCrawler:
 #     }
 
 
-def search_metadata(query):
-    """Pesquisa por metadados com suporte a múltiplas palavras em qualquer ordem.
+def _compile_token_patterns(tokens):
+    """Valida cada token como expressão regular; se inválido, cai para literal."""
+    patterns = []
+    for t in tokens:
+        try:
+            re.compile(t)
+            patterns.append(t)
+        except re.error:
+            patterns.append(re.escape(t))
+    return patterns
 
-    Combina tokens com AND (todas as palavras devem aparecer) e busca em múltiplos campos
-    com OR por modelo: Tabelas (name, schema, type), Campos (name, data_type), Comentários (comment).
+
+def search_metadata(query):
+    """Pesquisa por metadados usando expressões regulares (case-insensitive).
+
+    A consulta é dividida em tokens por espaços. Cada token é tratado como uma
+    expressão regular, e todos devem casar (AND) — em qualquer ordem — em pelo menos
+    um dos campos pesquisados (OR por modelo): Tabelas (name, schema, type),
+    Campos (name, data_type), Comentários (comment).
+
+    Exemplo: "indi pp li._" casa com "LIM_Indicador_PPA".
     """
     tokens = [t for t in (query or '').strip().split() if t]
+    if not tokens:
+        return {
+            'tables': TableMetadata.objects.none(),
+            'fields': FieldMetadata.objects.none(),
+            'comments': MetadataComment.objects.none(),
+        }
+
+    patterns = _compile_token_patterns(tokens)
 
     # Tabelas: para cada token, ele pode aparecer em name OU schema OU type; todos os tokens devem aparecer
     tables_q = Q()
-    for t in tokens:
-        tables_q &= (Q(name__icontains=t) | Q(schema__icontains=t) | Q(type__icontains=t))
-    tables = TableMetadata.objects.filter(tables_q).distinct() if tokens else TableMetadata.objects.none()
+    for p in patterns:
+        tables_q &= (Q(name__iregex=p) | Q(schema__iregex=p) | Q(type__iregex=p))
+    tables = TableMetadata.objects.filter(tables_q).distinct()
 
     # Campos: name OU data_type; todos os tokens devem aparecer
     fields_q = Q()
-    for t in tokens:
-        fields_q &= (Q(name__icontains=t) | Q(data_type__icontains=t))
-    fields = FieldMetadata.objects.filter(fields_q).distinct() if tokens else FieldMetadata.objects.none()
+    for p in patterns:
+        fields_q &= (Q(name__iregex=p) | Q(data_type__iregex=p))
+    fields = FieldMetadata.objects.filter(fields_q).distinct()
 
     # Comentários: em comment; todos os tokens devem aparecer
     comments_q = Q()
-    for t in tokens:
-        comments_q &= Q(comment__icontains=t)
-    comments = MetadataComment.objects.filter(comments_q).distinct() if tokens else MetadataComment.objects.none()
+    for p in patterns:
+        comments_q &= Q(comment__iregex=p)
+    comments = MetadataComment.objects.filter(comments_q).distinct()
 
     return {
         'tables': tables,

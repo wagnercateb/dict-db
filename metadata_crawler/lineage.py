@@ -172,7 +172,9 @@ def normalize_table(db: str, raw: str) -> Optional[str]:
              for p in split_identifier(raw)]
     if not parts:
         return None
-    if any(p.startswith("#") for p in parts if p):
+    # Tabelas temporárias (#temp) e variáveis de tabela (@tabela) não são
+    # objetos físicos e não devem aparecer como tabelas modificadas.
+    if any(p.startswith(("#", "@")) for p in parts if p):
         return None
 
     name = parts[-1].strip()
@@ -274,11 +276,20 @@ def extract_table_identifiers(db: str, sql: str, normalize_case: bool = True) ->
         if base_name not in cte_names:
             tables.add(normalized)
 
-    tables = [
-        (db + ".dbo." if str(t).count(".") < 2 else "") + str(t).replace("<default>.", "")
-        for t in tables
-    ]
-    return sorted(tables)
+    qualified = []
+    for t in tables:
+        t = str(t).replace("<default>.", "")
+        dots = t.count(".")
+        if dots >= 2:
+            # já vem como banco.esquema.tabela
+            qualified.append(t)
+        elif dots == 1:
+            # esquema.tabela -> falta apenas o banco
+            qualified.append(f"{db}.{t}")
+        else:
+            # tabela -> assume o esquema dbo do banco atual
+            qualified.append(f"{db}.dbo.{t}")
+    return sorted(qualified)
 
 
 def extract_view_dependencies(db: str, cursor) -> List[dict]:
@@ -331,8 +342,12 @@ _FROM_ALIAS_RE = re.compile(
 )
 
 
-def _resolve_alias_target(text: str, start: int, target_raw: str) -> str:
-    """Resolve ``UPDATE alias`` / ``DELETE alias`` para a tabela do FROM."""
+def _resolve_alias_target(text: str, target_raw: str) -> str:
+    """Resolve ``UPDATE alias`` / ``DELETE alias`` para a tabela do FROM.
+
+    Procura o alias em todo o texto (ou no contexto informado, quando o DML veio
+    de um pedaço de SQL dinâmico montado por concatenação).
+    """
     parts = [p for p in split_identifier(target_raw) if p]
     if len(parts) >= 2:
         return target_raw
@@ -340,29 +355,118 @@ def _resolve_alias_target(text: str, start: int, target_raw: str) -> str:
     if not alias:
         return target_raw
 
-    window = text[start:start + 8000]
-    for match in _FROM_ALIAS_RE.finditer(window):
+    for match in _FROM_ALIAS_RE.finditer(text):
         table, table_alias = match.group(1), match.group(2)
         if table_alias and table_alias.strip("[]").lower() == alias:
             return table
     return target_raw
 
 
-def extract_dml_modifiers(db: str, sql: str) -> List[dict]:
-    """Extrai comandos DML que afetam tabelas em um corpo SQL.
+# Heurística usada para decidir se um literal de texto pode conter SQL
+# dinâmico (evita reprocessar mensagens/e-mails sem comandos).
+_DYNAMIC_SQL_HINT_RE = re.compile(
+    r"\b(?:INSERT|UPDATE|DELETE|SELECT|EXEC|EXECUTE|MERGE|BULK)\b",
+    re.IGNORECASE,
+)
 
-    Retorna uma lista de ``{"command": ..., "table": banco.esquema.tabela}``
-    sem duplicidades e preservando a ordem de aparição.
+# Profundidade máxima de recursão ao desembrulhar SQL dinâmico aninhado.
+_MAX_DYNAMIC_SQL_DEPTH = 3
+
+
+def extract_string_literals(sql: str) -> List[str]:
+    """Extrai o conteúdo dos literais de texto, ignorando comentários.
+
+    É usado para recuperar comandos DML embutidos em SQL dinâmico executado
+    por ``EXEC('...')`` / ``sp_executesql N'...'``. O scanner ignora
+    ``--`` e ``/* */`` para não confundir apóstrofos em comentários e trata a
+    duplicação de aspas (``''``) como escape.
     """
-    text = strip_sql_noise(sql)
-    if not text:
+    if not sql:
         return []
 
-    cte_names = extract_cte_names(text)
+    literals: List[str] = []
+    i = 0
+    n = len(sql)
+    state = None  # None | 'line' | 'block'
+    while i < n:
+        ch = sql[i]
+        two = sql[i:i + 2]
 
+        if state is None:
+            if two == "--":
+                state = "line"
+                i += 2
+            elif two == "/*":
+                state = "block"
+                i += 2
+            elif ch == "'":
+                j = i + 1
+                buf: List[str] = []
+                while j < n:
+                    if sql[j:j + 2] == "''":
+                        buf.append("'")
+                        j += 2
+                    elif sql[j] == "'":
+                        break
+                    else:
+                        buf.append(sql[j])
+                        j += 1
+                literals.append("".join(buf))
+                i = j + 1 if j < n else n
+            else:
+                i += 1
+        elif state == "line":
+            if ch in "\r\n":
+                state = None
+            i += 1
+        else:  # block
+            if two == "*/":
+                state = None
+                i += 2
+            else:
+                i += 1
+
+    return literals
+
+
+# Palavras-chave que não são nomes de tabela. Aparecem como "tabela" quando
+# um trecho de SQL dinâmico é montado por concatenação e termina logo após a
+# palavra (ex.: ``'INSERT INTO ' + @tabela`` -> ``INSERT INTO``).
+_SQL_RESERVED_WORDS = {
+    "into", "values", "value", "set", "where", "from", "select", "insert",
+    "update", "delete", "merge", "table", "top", "output", "default", "null",
+    "join", "inner", "left", "right", "full", "outer", "cross", "apply", "on",
+    "as", "with", "union", "all", "distinct", "and", "or", "not", "exists",
+    "in", "is", "group", "order", "by", "having", "exec", "execute",
+    "sp_executesql", "return", "begin", "end", "if", "else", "declare",
+    "print", "goto", "case", "when", "then", "else", "cast", "convert",
+    "truncate", "drop", "create", "alter", "identity", "option", "lock",
+    "nolock", "holdlock", "rowlock", "readpast", "percent",
+}
+
+
+def _is_bare_reserved_word(raw: str) -> bool:
+    """True quando o identificador é uma palavra-chave sem [colchetes]/"aspas"."""
+    token = (raw or "").strip()
+    if re.fullmatch(r"[A-Za-z_][\w$]*", token):
+        return token.lower() in _SQL_RESERVED_WORDS
+    return False
+
+
+def _extract_static_modifiers(db: str, text: str,
+                              alias_context: Optional[str] = None) -> List[Tuple[str, str]]:
+    """Extrai DML de um texto já limpo (comentários/literais removidos).
+
+    ``alias_context`` permite resolver ``UPDATE alias`` / ``DELETE alias`` cujo
+    ``FROM`` ficou em outro trecho de SQL dinâmico.
+    """
+    cte_names = extract_cte_names(text)
+    alias_text = alias_context if alias_context is not None else text
     found: List[Tuple[str, str]] = []
 
     def add(command: str, raw: str) -> None:
+        if _is_bare_reserved_word(raw):
+            return
         table = normalize_table(db, raw)
         if not table:
             return
@@ -377,13 +481,57 @@ def extract_dml_modifiers(db: str, sql: str) -> List[dict]:
         add("SELECT INTO", match.group(1))
 
     for match in _UPDATE_RE.finditer(text):
-        add("UPDATE", _resolve_alias_target(text, match.end(), match.group(1)))
+        add("UPDATE", _resolve_alias_target(alias_text, match.group(1)))
 
     for match in _DELETE_FROM_RE.finditer(text):
         add("DELETE", match.group(1))
 
     for match in _DELETE_ALIAS_RE.finditer(text):
-        add("DELETE", _resolve_alias_target(text, match.end(), match.group(1)))
+        add("DELETE", _resolve_alias_target(alias_text, match.group(1)))
+
+    return found
+
+
+def _extract_dynamic_modifiers(db: str, sql: str, alias_context: str,
+                               depth: int) -> List[Tuple[str, str]]:
+    """Desembrulha literais de SQL dinâmico, recursivamente."""
+    if depth >= _MAX_DYNAMIC_SQL_DEPTH:
+        return []
+
+    found: List[Tuple[str, str]] = []
+    for literal in extract_string_literals(sql):
+        if not literal or not _DYNAMIC_SQL_HINT_RE.search(literal):
+            continue
+        found.extend(
+            _extract_static_modifiers(db, strip_sql_noise(literal),
+                                      alias_context=alias_context)
+        )
+        found.extend(_extract_dynamic_modifiers(db, literal, alias_context, depth + 1))
+    return found
+
+
+def extract_dml_modifiers(db: str, sql: str, _depth: int = 0) -> List[dict]:
+    """Extrai comandos DML que afetam tabelas em um corpo SQL.
+
+    Além do SQL estático, desembrulha SQL dinâmico (``EXEC('INSERT ...')`` e
+    ``sp_executesql N'DELETE ...'``) para capturar comandos construídos em
+    literais de texto, recursivamente (até ``_MAX_DYNAMIC_SQL_DEPTH``).
+
+    Retorna uma lista de ``{"command": ..., "table": banco.esquema.tabela}``
+    sem duplicidades e preservando a ordem de aparição.
+    """
+    if not sql:
+        return []
+
+    text = strip_sql_noise(sql)
+    found: List[Tuple[str, str]] = list(_extract_static_modifiers(db, text)) if text else []
+
+    literals = extract_string_literals(sql)
+    if literals and _depth < _MAX_DYNAMIC_SQL_DEPTH:
+        # Contexto único com todos os literais para resolver aliases cujo FROM
+        # ficou em outro pedaço do SQL dinâmico montado por concatenação.
+        alias_context = "\n".join(strip_sql_noise(lit) for lit in literals) or text
+        found.extend(_extract_dynamic_modifiers(db, sql, alias_context, _depth))
 
     seen = set()
     modifiers = []
@@ -448,7 +596,12 @@ def extract_routine_modifiers(db: str, cursor) -> List[dict]:
     for schema_name, object_name, object_type, definition in cursor.fetchall():
         if not definition:
             continue
-        modifiers = extract_dml_modifiers(db, definition)
+        try:
+            modifiers = extract_dml_modifiers(db, definition)
+        except Exception:
+            # Uma definição problemática não pode descartar as demais rotinas
+            # do banco (ex.: erro de decodificação do driver ODBC).
+            continue
         if not modifiers:
             continue
         routines.append({
@@ -503,6 +656,54 @@ def merge_records(existing: Sequence[dict], new_records: Iterable[dict], key: st
     return list(merged.values())
 
 
+def merge_modifier_records(existing: Sequence[dict], new_records: Iterable[dict]) -> list:
+    """Acumula modificadores por tabela em vez de substituir o registro.
+
+    Como o rastreamento é cross-database e pode ser feito por conexões com
+    permissões diferentes, a mesma tabela pode ser modificada por rotinas de
+    bancos distintos em rastreamentos distintos. Substituir o registro inteiro
+    perderia os modificadores já conhecidos; aqui eles são unidos (sem
+    duplicar ``command``/``routine``).
+    """
+    merged: Dict[str, dict] = {}
+    for item in existing:
+        table = item.get("table")
+        if table:
+            merged[table] = {
+                "table": table,
+                "modifiers": list(item.get("modifiers", [])),
+            }
+
+    for item in new_records:
+        table = item.get("table")
+        if not table:
+            continue
+        entry = merged.setdefault(table, {"table": table, "modifiers": []})
+        # A deduplicação ignora a caixa do nome da rotina: o mesmo banco pode
+        # ser relatado como ``REPREBH`` (``sys.databases``) ou ``reprebh`` (nome
+        # da conexão) e não deve gerar linhas duplicadas.
+        seen = {
+            (m.get("command"), (m.get("routine") or "").lower(),
+             m.get("routine_type"))
+            for m in entry["modifiers"]
+        }
+        for modifier in item.get("modifiers", []):
+            key = (modifier.get("command"),
+                   (modifier.get("routine") or "").lower(),
+                   modifier.get("routine_type"))
+            if key not in seen:
+                seen.add(key)
+                entry["modifiers"].append(modifier)
+
+    for entry in merged.values():
+        entry["modifiers"].sort(
+            key=lambda m: (m.get("routine", "").lower(), m.get("command", ""),
+                           m.get("routine_type", ""))
+        )
+
+    return [merged[table] for table in sorted(merged)]
+
+
 def write_json(path: str, data) -> None:
     directory = os.path.dirname(path)
     if directory:
@@ -526,8 +727,12 @@ def update_lineage_files(db: str, cursor,
     """
     views = extract_view_dependencies(db, cursor)
 
+    # O nome do banco configurado na conexão pode diferir apenas na caixa
+    # (ex.: ``reprebh`` vs ``REPREBH`` devolvido por ``sys.databases``). Sem a
+    # comparação case-insensitive o banco seria varrido duas vezes e as rotinas
+    # apareceriam duplicadas em ``modifiers.json``.
     routine_db_list = list(databases) if databases else [db]
-    if db not in routine_db_list:
+    if db.strip().lower() not in {d.strip().lower() for d in routine_db_list}:
         routine_db_list.append(db)
 
     routines: List[dict] = []
@@ -547,7 +752,7 @@ def update_lineage_files(db: str, cursor,
 
     if modifiers_path:
         existing_modifiers = load_json(modifiers_path)
-        merged_modifiers = merge_records(existing_modifiers, modifier_index, "table")
+        merged_modifiers = merge_modifier_records(existing_modifiers, modifier_index)
         write_json(modifiers_path, merged_modifiers)
 
     return {

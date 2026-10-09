@@ -34,8 +34,17 @@ def highlight(text, terms):
     # Escape text to avoid breaking HTML, then apply highlighting
     safe_text = escape(text)
 
+    # Each term is treated as a regex (case-insensitive); invalid ones fall back to literal
+    patterns = []
+    for t in cleaned:
+        try:
+            re.compile(t)
+            patterns.append(t)
+        except re.error:
+            patterns.append(re.escape(t))
+
     # Build one combined regex that matches any term, case-insensitive
-    pattern = re.compile(r"(" + "|".join(re.escape(t) for t in cleaned) + r")", re.IGNORECASE)
+    pattern = re.compile(r"(" + "|".join(patterns) + r")", re.IGNORECASE)
 
     def repl(m):
         return f'<span class="highlight">{m.group(0)}</span>'

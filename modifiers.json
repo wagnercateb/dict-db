@@ -1,5 +1,25 @@
 [
   {
+    "table": "dbcos001.dbo.cos_sal_saldopadrao_2014",
+    "modifiers": [
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GERAR_RELATORIO_BASILEIA_III_PRUDENCIAL_201601",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "decopmultas.dbo.eventos",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.OLD_MUL_ProcessarMultasWeb",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
     "table": "desig_d1_gera_top50.dbo.rel_basileia3_prudencial_201601_rascunho",
     "modifiers": [
       {
@@ -10,181 +30,46 @@
     ]
   },
   {
-    "table": "desig_d5_monitoramento_de_limites.dbo.@datas",
+    "table": "desig_d5_extracao_dados.dbo.cod_conglomerado",
     "modifiers": [
       {
         "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.getDatabases",
-        "routine_type": "FUNCTION"
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP10032015",
+        "routine_type": "PROCEDURE"
       },
       {
         "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.getDatabasesSemestrais",
-        "routine_type": "FUNCTION"
-      }
-    ]
-  },
-  {
-    "table": "desig_d5_monitoramento_de_limites.dbo.@errors",
-    "modifiers": [
-      {
-        "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.CommandExecute",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP10062015",
         "routine_type": "PROCEDURE"
       }
     ]
   },
   {
-    "table": "desig_d5_monitoramento_de_limites.dbo.@leanterior",
+    "table": "desig_d5_extracao_dados.dbo.uuni021tb_pessoa_bc",
     "modifiers": [
       {
         "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.OLD_GI_DLO_Consistencia_ListaEsperados_01",
+        "routine": "REPREBH.dbo.CAD_Carrega_Responsavel_Area_Atuacao_BKP03092015",
         "routine_type": "PROCEDURE"
       }
     ]
   },
   {
-    "table": "desig_d5_monitoramento_de_limites.dbo.@leatual",
+    "table": "desig_d5_extracao_dados.dbo.uuni069tb_ocorrencia",
     "modifiers": [
       {
-        "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.OLD_GI_DLO_Consistencia_ListaEsperados_01",
-        "routine_type": "PROCEDURE"
-      }
-    ]
-  },
-  {
-    "table": "desig_d5_monitoramento_de_limites.dbo.@resumo",
-    "modifiers": [
-      {
-        "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.Fn_LIM_Desuc_Resumo_Equipe",
-        "routine_type": "FUNCTION"
-      }
-    ]
-  },
-  {
-    "table": "desig_d5_monitoramento_de_limites.dbo.@t1",
-    "modifiers": [
-      {
-        "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_DatasLimites_Entrega",
-        "routine_type": "FUNCTION"
-      },
-      {
-        "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_DatasLimites_Entrega_Ajustadas",
-        "routine_type": "FUNCTION"
-      },
-      {
-        "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_RelGabin_02",
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP10062015",
         "routine_type": "PROCEDURE"
       },
       {
-        "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_RelGabin_04",
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP14042020",
         "routine_type": "PROCEDURE"
       },
       {
-        "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_Ocorrencias_Unicad",
-        "routine_type": "FUNCTION"
-      },
-      {
-        "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.Ocorrencia_Unicad_MaisRecente_Anterior",
-        "routine_type": "FUNCTION"
-      }
-    ]
-  },
-  {
-    "table": "desig_d5_monitoramento_de_limites.dbo.@t2",
-    "modifiers": [
-      {
-        "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_RelGabin_02",
-        "routine_type": "PROCEDURE"
-      }
-    ]
-  },
-  {
-    "table": "desig_d5_monitoramento_de_limites.dbo.@tabauxiliar",
-    "modifiers": [
-      {
-        "command": "DELETE",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.OLD_GI_DLO_Consistencia_ListaEsperados_01",
-        "routine_type": "PROCEDURE"
-      },
-      {
-        "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.OLD_GI_DLO_Consistencia_ListaEsperados_01",
-        "routine_type": "PROCEDURE"
-      }
-    ]
-  },
-  {
-    "table": "desig_d5_monitoramento_de_limites.dbo.@tabdatas",
-    "modifiers": [
-      {
-        "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_ROSE_Processamento",
-        "routine_type": "PROCEDURE"
-      },
-      {
-        "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_ROSE_Processamento_1",
-        "routine_type": "PROCEDURE"
-      },
-      {
-        "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_ROSE_Processamento_2",
-        "routine_type": "PROCEDURE"
-      }
-    ]
-  },
-  {
-    "table": "desig_d5_monitoramento_de_limites.dbo.@tabelaretornada",
-    "modifiers": [
-      {
-        "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.AlteracaoSegmentacaoPrudencial",
-        "routine_type": "FUNCTION"
-      },
-      {
-        "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.AlteracaoSegmentacaoPrudencial_OLD",
-        "routine_type": "FUNCTION"
-      },
-      {
-        "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_lista_esperados_recente",
-        "routine_type": "FUNCTION"
-      }
-    ]
-  },
-  {
-    "table": "desig_d5_monitoramento_de_limites.dbo.@tbl",
-    "modifiers": [
-      {
-        "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_POPR_Inconsistencias_Cosif_Calcular_Loop_DEPRECATED",
-        "routine_type": "PROCEDURE"
-      }
-    ]
-  },
-  {
-    "table": "desig_d5_monitoramento_de_limites.dbo.@temp_datas",
-    "modifiers": [
-      {
-        "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.PJUR1_PROCESSA_DATAS",
-        "routine_type": "PROCEDURE"
-      },
-      {
-        "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.PJUR1_PROCESSA_DATAS_bkp",
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP26032015",
         "routine_type": "PROCEDURE"
       }
     ]
@@ -295,6 +180,16 @@
     ]
   },
   {
+    "table": "desig_d5_monitoramento_de_limites.dbo.cad_unicad_completo",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP10062015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
     "table": "desig_d5_monitoramento_de_limites.dbo.cap_sgs_solvencia",
     "modifiers": [
       {
@@ -320,6 +215,16 @@
       {
         "command": "UPDATE",
         "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.CommandExecute",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.coop_pl_desenquadrado_201602",
+    "modifiers": [
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.COOP_AlterouCategoria",
         "routine_type": "PROCEDURE"
       }
     ]
@@ -665,6 +570,16 @@
     ]
   },
   {
+    "table": "desig_d5_monitoramento_de_limites.dbo.dlo_regimesnaoencerrados_excecoes",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Avisar_RegimesNaoEncerrados",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
     "table": "desig_d5_monitoramento_de_limites.dbo.dlo_s5_operacoes_vedadas",
     "modifiers": [
       {
@@ -805,6 +720,26 @@
       {
         "command": "INSERT",
         "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DDR_Carrega_Entrega_em_Atraso",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.gi_ddr_indbasileia_diario",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria_BAK20201021",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria_BAK20220908",
         "routine_type": "PROCEDURE"
       }
     ]
@@ -1333,7 +1268,17 @@
         "routine_type": "PROCEDURE"
       },
       {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinaliz_AlteraAbordagemPOPR",
+        "routine_type": "PROCEDURE"
+      },
+      {
         "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinaliz_Desenq_LCR",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
         "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinaliz_Desenq_LCR",
         "routine_type": "PROCEDURE"
       },
@@ -1369,6 +1314,11 @@
       },
       {
         "command": "DELETE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_CompararSaldosCosifDLO",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
         "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_CompararSaldosCosifDLO",
         "routine_type": "PROCEDURE"
       }
@@ -1561,6 +1511,11 @@
         "command": "INSERT",
         "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinaliz_AlteraAbordagemPOPR",
         "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.LIM_Carrega_Sinaliz_AlteraAbordagemPOPR",
+        "routine_type": "PROCEDURE"
       }
     ]
   },
@@ -1645,6 +1600,16 @@
     ]
   },
   {
+    "table": "desig_d5_monitoramento_de_limites.dbo.monitorartabelas_estatisticas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.MonitorarTabelas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
     "table": "desig_d5_monitoramento_de_limites.dbo.numdocsentreguesumaif",
     "modifiers": [
       {
@@ -1655,6 +1620,16 @@
       {
         "command": "UPDATE",
         "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.AtualizaNumDocsEntreguesPorIF",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "desig_d5_monitoramento_de_limites.dbo.principal",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.CAD_Carrega_EmAnormalidade_Desuc",
         "routine_type": "PROCEDURE"
       }
     ]
@@ -3230,16 +3205,436 @@
     ]
   },
   {
-    "table": "desig_d5_monitoramento_de_limites.dbo.values",
+    "table": "reprebh.dbo.adm_controle_demandas",
+    "modifiers": [
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.ADM_Controle_Demandas_RotinaDiaria",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.adm_controle_demandas_d-1",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.ADM_Controle_Demandas_RotinaDiaria",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.adm_controle_demandas_d-2",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.ADM_Controle_Demandas_RotinaDiaria",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.apagar_teste2",
     "modifiers": [
       {
         "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_Carga_Tabela_SaldosAlterados",
+        "routine": "REPREBH.dbo.sp_teste2",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_consorcios_imoveis",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Consorcios_Imoveis",
         "routine_type": "PROCEDURE"
       },
       {
         "command": "INSERT",
-        "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.DLO_POPR_Inconsistencias_Cosif_Calcular_DEPRECATED",
+        "routine": "REPREBH.dbo.CAD_Carrega_Consorcios_Imoveis_BKP10062015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_consorcios_natureza",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Consorcios_Natureza",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Consorcios_Natureza_BKP10062015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_consorcios_ocorrencias",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Consorcios_Ocorrencias",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Carrega_Consorcios_Ocorrencias",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Consorcios_Ocorrencias_BKP10062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Carrega_Consorcios_Ocorrencias_BKP10062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Consorcios_Ocorrencias_BKP17032015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Carrega_Consorcios_Ocorrencias_BKP17032015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_cooperativas_atual",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Cooperativas_Atual",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Cooperativas_Atual_BKP10062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Cooperativas_Atual_BKP17032015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_cooperativas_central_sistema",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cooperativas_Central_Sistema",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_cooperativas_pacs",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_PACs",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_PACs_BKP10062015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_cooperativas_pacs_qtde",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_PACs",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_PACs_BKP10062015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_cooperativas_perfiloperacional",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_PerfilOperacional_Novas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_cooperativas_perfiloperacional_simulacao",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_PerfilOperacional_Simula",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_cooperativas_uf",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Cooperativas_UF",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Cooperativas_UF_BKP10062015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_cooperativas_vinculo",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Cooperativas_Vinculos",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_cotacaomoedas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.Carrega_CAD_CotacaoMoedas",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.Carrega_CAD_CotacaoMoedas_bkp15062015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_data_ultimo_comentario_supervisor",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ultimo_Comentario_Supervisor",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ultimo_Comentario_Supervisor_BKP11062015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_dias_uteis",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP10032015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP10062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP26022015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_email_area_responsabilidade_todas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Responsavel_Area_Atuacao",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Responsavel_Area_Atuacao_BKP11052021",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Responsavel_Area_Atuacao_BKP23092021",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_incorporacao",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP10062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP14042020",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP23112020",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP26032015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_incorporacao_copia",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP14042020",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP23112020",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_lista_sanea",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP10032015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP10062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP26022015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_lista_sanea_nova",
+    "modifiers": [
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP10032015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP10062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP26022015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_municipios",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Municipios",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Municipios_BKP10062015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_ocorrencias_autorizacoes",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP10062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP14042020",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP23112020",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP26032015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_ocorrencias_autorizacoes_ant",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP14042020",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP23112020",
         "routine_type": "PROCEDURE"
       }
     ]
@@ -3251,6 +3646,2296 @@
         "command": "UPDATE",
         "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Envia_Email_Cnpj_Definitivo",
         "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP10062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP10062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP14042020",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP14042020",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP23112020",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP23112020",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP26032015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP26032015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_responsavel_area_atuacao_unicad",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Responsavel_Area_Atuacao",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Responsavel_Area_Atuacao_BKP03092015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Responsavel_Area_Atuacao_BKP10062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Responsavel_Area_Atuacao_BKP11052021",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Carrega_Responsavel_Area_Atuacao_BKP23092021",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cad_responsavel_area_atuacao_unicad_ant",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CAD_Carrega_Responsavel_Area_Atuacao",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CAD_Carrega_Responsavel_Area_Atuacao_BKP11052021",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cadip_entidades_setor_publico",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CADIP_Carrega_Saldos",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CADIP_Carrega_Saldos_BKP15062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CADIP_Carrega_Saldos_BKP27112013",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CADIP_Carrega_Saldos_com_petro",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cadip_saldos",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CADIP_Carrega_Saldos",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CADIP_Carrega_Saldos",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CADIP_Carrega_Saldos_BKP15062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CADIP_Carrega_Saldos_BKP15062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CADIP_Carrega_Saldos_BKP27112013",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CADIP_Carrega_Saldos_BKP27112013",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CADIP_Carrega_Saldos_com_petro",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CADIP_Carrega_Saldos_com_petro",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.commandlog",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CommandExecute",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CommandExecute",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_cnpjs_com_erro",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_cod_central_coop",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Atualiza_Central_Sistema_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Atualiza_Central_Sistema_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Cria_Central_COOP",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_cod_sistema",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Atualiza_Central_Sistema_COOP",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_controleprocessamento",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Consolida",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_Inicio",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Consolida_Inicio",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_Inicio_BKP14082018",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Consolida_Inicio_BKP14082018",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Consolida_SFN",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_coop_cnpjs_consolidados",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_coop_cnpjs_nao_consolidados",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_coop_limites",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_coop_saldos",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_docs_incluidos_excluidos",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Atualiza_Docs_Incluidos_Excluidos",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Atualiza_Docs_Incluidos_Excluidos",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Atualiza_Docs_Incluidos_Excluidos_BKP10062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Atualiza_Docs_Incluidos_Excluidos_BKP10062015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_nb_cnpjs_consolidados",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_nb_cnpjs_nao_consolidados",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_nb_limites",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_nb_saldos",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_ntop_cnpjs_consolidados",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_ntop_cnpjs_nao_consolidados",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_ntop_limites",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_ntop_saldos",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_sfn_cnpjs_consolidados",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida_SFN",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_SFN",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_sfn_cnpjs_nao_consolidados",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida_SFN",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_SFN",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_sfn_limites",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida_SFN",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_SFN",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cons_sfn_saldos",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.CONS_Consolida_SFN",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_SFN",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.coop_cadastro",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.COOP_Atualiza_Base",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.corresp_consolidado",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CORRESP_Carrega_Tabela_Consolidado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cos_planocontas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.X_COS_Verifica_NovasContas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cos_saldos_cosif_hibrido",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.COS_Atualiza_Saldos_Cosif_Hibrido",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.COS_Atualiza_Saldos_Cosif_Hibrido",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cos_saldos_cosif_historico",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP10032015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP10062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP26022015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cosif_contas_finais",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.Atualiza_COSIF_Contas_Finais",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.Atualiza_COSIF_Contas_Finais",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cre_valores_2_b",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.SP_LOAD_TABELA_CRE_VALORES_2_B",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.cred_uesp208_oper_credito_ult4meses",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.OLD_CRED_Carrega_UESP208_Ult4Meses",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.criatabelasdebackup_log",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CriaTabelasDeBackup",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.ddr_chaves_duplicadas",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria_BAK20220908",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.ddr_saldos_comcodigosantigos_temp",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria_BAK20220908",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria_BAK20220908",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.ddr_variacoes_acoes_cambio",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.DDR_Carrega_Tabela_VariacoesAcoesCambio",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.dmpl_acionista",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.DMPL_Acionistas",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.DMPL_Acionistas",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.DMPL_Confederacao",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.dmpl_base",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.DMPL_Confederacao",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.DMPL_Consolida_Cong_Data_I",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.DMPL_Consolida_Cong_Data_I",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.dmpl_base_compactada",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.DMPL_Confederacao",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.DMPL_Consolida_Cong_Data_C",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.DMPL_Consolida_Cong_Data_C",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.DMPL_Consolida_Cong_Data_I",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.dmpl_cooperativas",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.DMPL_Confederacao",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.DMPL_Confederacao",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.dmpl_excecoes",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.DMPL_Gera_Excecoes",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.DMPL_Gera_Excecoes",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.dmpl_participacao",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.DMPL_Confederacao",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.DMPL_Det_Cong",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.DMPL_Det_Cong",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.dmpl_principal",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.DMPL_Consolida_Principal",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_controleprocessamento",
+    "modifiers": [
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Diarios_Compromissadas",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Setor_Publico",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria_BAK20201021",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria_BAK20220908",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.LIM_Corte_Mensal",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.LIM_Envia_Relatorios",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_controleprocreldesenq",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Envia_Relatorios",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.LIM_Envia_Relatorios",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.LIM_Gera_Tabelas_Desenquadramento",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_corte_mensal_desenquadradas",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.LIM_Corte_Mensal",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Corte_Mensal",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_corte_mensal_limites_calculados",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.LIM_Corte_Mensal",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Corte_Mensal",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.LIM_Corte_Mensal",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_corte_mensal_limites_outrosvalores",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.LIM_Corte_Mensal",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Corte_Mensal",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_corte_mensal_logprocessamento",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Corte_Mensal",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.LIM_Corte_Mensal",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_corte_mensal_scr_desenq_expcliente",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.LIM_Corte_Mensal",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Corte_Mensal",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_corte_mensal_scr_desenq_expconcentrada",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Corte_Mensal",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_corte_mensal_scr_desenq_expconcentrada_grupoeconomico",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Corte_Mensal",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_corte_mensal_scr_desenq_expgrupoeconomico",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Corte_Mensal",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_corte_mensal_unicad",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Corte_Mensal",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.LIM_Corte_Mensal",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_ddr",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria_BAK20220908",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_ddr_historico",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.insertInto_LIM_DDR",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_ddr_temp",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria_BAK20220908",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_indicador_ppa",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.LIM_Gera_Tabelas_Desenquadramento",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Gera_Tabelas_Desenquadramento",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_lcsp_metodoate201706_dadospos201706",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Setor_Publico",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Setor_Publico",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_limite_lcr_2160",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Carrega_Limite_LCR_2160",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_limites_calculados_diarios",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Diarios_Compromissadas",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Diarios_Compromissadas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_limites_calculados_fora_da_plim",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Setor_Publico",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Setor_Publico",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_ple_calculado",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.LIM_PLE_Atualiza_Base",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_PLE_Atualiza_Base",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_popr_bia_tunel",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.LIM_BIA_Tunel",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_popr_bia_tunel_base",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_BIA_TUNEL_CRIA_BASE",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_scr_exposicao_cliente",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Exposicao_Cliente",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Exposicao_Cliente",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Exposicao_Cliente",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Exposicao_Cliente",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_scr_exposicao_logprocessamento",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Exposicao_Cliente",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_tab_limites_calculados_completo",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP10032015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP10062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP26022015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_tab_limites_outros_valores_completo",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP10032015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP10062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP26022015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lim_temp_arquivosdodiretorio",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.LIM_Envia_Relatorios",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Envia_Relatorios",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.log_procedure_steps",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.Logar",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lsp_con010_seriehistorica",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LSP_GuardarSerieHistorica",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lsp_con020_seriehistorica",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LSP_GuardarSerieHistorica",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lsp_con025_seriehistorica",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LSP_GuardarSerieHistorica",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lsp_con030_seriehistorica",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LSP_GuardarSerieHistorica",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lsp_con035_seriehistorica",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LSP_GuardarSerieHistorica",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.lsp_con040_seriehistorica",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LSP_GuardarSerieHistorica",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.mul_ddr_pesp330",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.OLD_MUL_Carrega_DDR_PESP330",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.mul_multas_diario",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.OLD_MUL_ProcessarMultasWeb",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.OLD_MUL_ProcessarMultasWeb",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.OLD_MUL_ProcessarMultasWeb",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.mul_multas_historico",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.OLD_MUL_ProcessarMultasWeb",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.OLD_MUL_ProcessarMultasWeb",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.mul_temp",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.OLD_MUL_ProcessarMultasWeb",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.ps_pessoa_final",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.PS_CONSOLIDA_PESSOA",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.ps_principal",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.PS_CONSOLIDA_PARTICIPACAO",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.rank_coop_consolidados",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.RANK_COOP_GerarDados",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.RANK_COOP_GerarDados",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.rank_coop_geracao",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.RANK_COOP_GerarDados",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.RANK_COOP_GerarDados",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.rank_coop_indnsuavizados",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.RANK_COOP_GerarDados",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.RANK_COOP_GerarDados",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.rank_coop_indsuavizados",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.RANK_COOP_GerarDados",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.RANK_COOP_GerarDados",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.rank_coop_nconsolidados",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.RANK_COOP_GerarDados",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.RANK_COOP_GerarDados",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.rank_coop_notas",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.RANK_COOP_GerarDados",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.RANK_COOP_GerarDados",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.rank_coop_tempsuavizados",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.RANK_COOP_GerarDados",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.RANK_COOP_GerarDados",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.res_controleprocessamento",
+    "modifiers": [
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.RES_Calcula_Resultado_Cambial_Estimado",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.RES_Calcula_Resultado_Cambial_Estimado_BKP10062015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.res_resultado_cambial_estimado",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.RES_Calcula_Resultado_Cambial_Estimado",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.RES_Calcula_Resultado_Cambial_Estimado",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.RES_Calcula_Resultado_Cambial_Estimado_BKP10062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.RES_Calcula_Resultado_Cambial_Estimado_BKP10062015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.tbl_log_lim_corte_mensal",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Corte_Mensal",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_cad_mudancadenominacao",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_cad_novasautorizacoes",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP14042020",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP23112020",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_cad_novasautorizacoes_prudencial",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_cad_novasocorrencias",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP10062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP14042020",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP23112020",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP26032015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_cad_unicad",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Exposicao_Cliente",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_cadastrodasifs",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Corte_Mensal",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_cadip_saldos_oper",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CADIP_Carrega_Saldos",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CADIP_Carrega_Saldos_BKP15062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CADIP_Carrega_Saldos_BKP27112013",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CADIP_Carrega_Saldos_com_petro",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_compromissadas_1",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Diarios_Compromissadas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_compromissadas_2",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Diarios_Compromissadas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_compromissadas_3",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Diarios_Compromissadas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_controle_demandas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.ADM_Controle_Demandas_RotinaDiaria",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_controle_demandas_prazos",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.ADM_Controle_Demandas_RotinaDiaria",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_coop_consolidados",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_coop_dados",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_coop_ib",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_coop_ib_imob",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_coop_imob",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_coop_nao_consolidados",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_coop_saldos",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_coop_saldos_aglutinados",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_COOP_bak20120202",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_corresp_consolidado",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CORRESP_Carrega_Tabela_Consolidado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_corresp_vinculo_servautoriz",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CORRESP_Carrega_Tabela_Consolidado",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_cos_novascontas",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.X_COS_Verifica_NovasContas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_cosif_fgc",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CAD_Carrega_Relacao_IFS_FGC",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_ddr_saldos_comcodigosantigos_consolidada",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_lim_compromissadas_cnpjs_selecionados",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Diarios_Compromissadas",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_lim_ddr",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_limites_sfn",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_SFN",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_moedas",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.Carrega_CAD_CotacaoMoedas",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.Carrega_CAD_CotacaoMoedas_bkp15062015",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_nb_consolidados",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_nb_dados",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_nb_ib",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_nb_ib_imob",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_nb_imob",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_nb_nao_consolidados",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_nb_saldos",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_nb_saldos_aglutinados",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_NB",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_ntop_consolidados",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_ntop_dados",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_ntop_ib",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_ntop_ib_imob",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_ntop_imob",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_ntop_nao_consolidados",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_ntop_saldos",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_ntop_saldos_aglutinados",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.CONS_Consolida_NTOP",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temp_saldos_sfn",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.CONS_Consolida_SFN",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.tempexpcli_di_cdb_deb",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Exposicao_Cliente",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Exposicao_Cliente",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.tempexpcli_tb_cblc",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Exposicao_Cliente",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.tempexpcli_tb_di_sna_limexpcli",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Exposicao_Cliente",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Exposicao_Cliente",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.tempexpcli_uniao_di_cdb_deb",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Exposicao_Cliente",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.temppivot",
+    "modifiers": [
+      {
+        "command": "SELECT INTO",
+        "routine": "REPREBH.dbo.spPivot_Table",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.spPivot_Table",
+        "routine_type": "PROCEDURE"
       }
     ]
   },
@@ -3261,6 +5946,206 @@
         "command": "UPDATE",
         "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.GI_DLO_Consistencia_08_AtualizaTabelas",
         "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.ADM_Controle_Demandas_RotinaDiaria",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP10032015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP10062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Atualiza_Cadastros_Historicos_BKP26022015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP10062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP14042020",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP23112020",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CAD_Carrega_Ocorrencias_Autorizacoes_BKP26032015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CADIP_Carrega_Saldos",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CADIP_Carrega_Saldos_BKP15062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CADIP_Carrega_Saldos_BKP27112013",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CADIP_Carrega_Saldos_com_petro",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Atualiza_Docs_Incluidos_Excluidos",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Atualiza_Docs_Incluidos_Excluidos_BKP10062015",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Consolida_Inicio",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.CONS_Consolida_Inicio_BKP14082018",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.COS_Atualiza_Saldos_Cosif_Hibrido",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.DDR_Carrega_Tabela_VariacoesAcoesCambio",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Diarios",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.LIM_Calcula_Limites_Setor_Publico",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria_BAK20201021",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.LIM_Carrega_Exp_Cambial_Diaria_BAK20220908",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.OLD_CRED_Carrega_UESP208_Ult4Meses",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.OLD_MUL_Carrega_DDR_PESP330",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.ti_log_processamento",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.TI_Processa_Repescagem",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.TI_Processa_Repescagem",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.TI_Processa_Repescagem",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.TI_Processa_Rotina_Noturna",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.TI_Processa_Rotina_Noturna",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.TI_Processa_Rotina_Noturna",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.TI_Processa_Rotina_Noturna_BAK20200806",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.TI_Processa_Rotina_Noturna_BAK20200806",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.TI_Processa_Rotina_Noturna_BAK20200806",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.ti_log_processamento_matinal",
+    "modifiers": [
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.TI_Processa_Rotina_Matinal_BAK20200731",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.TI_Processa_Rotina_Matinal_BAK20200731",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.TI_Processa_Rotina_Matinal_BAK20200731",
+        "routine_type": "PROCEDURE"
       }
     ]
   },
@@ -3270,6 +6155,76 @@
       {
         "command": "INSERT",
         "routine": "DESIG_D5_Monitoramento_de_Limites.dbo.MonitorarTabelas",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "DELETE",
+        "routine": "REPREBH.dbo.TI_Processa_Rotina_Matinal_Generica",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.TI_Processa_Rotina_Matinal_Generica",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "UPDATE",
+        "routine": "REPREBH.dbo.TI_Processa_Rotina_Matinal_Generica",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.var_b1b2",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.VAR_DATA",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.VAR_DATA2",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.var_b1b2_2",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.VAR_DATA2",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.var_b1b2_dlo",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.VAR_DATA",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.VAR_DATA2",
+        "routine_type": "PROCEDURE"
+      }
+    ]
+  },
+  {
+    "table": "reprebh.dbo.var_database",
+    "modifiers": [
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.VAR_DATA",
+        "routine_type": "PROCEDURE"
+      },
+      {
+        "command": "INSERT",
+        "routine": "REPREBH.dbo.VAR_DATA2",
         "routine_type": "PROCEDURE"
       }
     ]

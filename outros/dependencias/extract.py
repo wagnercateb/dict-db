@@ -30,6 +30,7 @@ from metadata_crawler.lineage import (  # noqa: E402
     extract_view_dependencies,
     list_accessible_databases,
     load_json,
+    merge_modifier_records,
     merge_records,
     write_json,
 )
@@ -79,7 +80,7 @@ def process_all_routines(db: str, connection_string: str):
             databases = list_accessible_databases(cursor)
         except Exception:
             databases = [db]
-        if db not in databases:
+        if db.strip().lower() not in {d.strip().lower() for d in databases}:
             databases.append(db)
 
         routines = []
@@ -118,7 +119,8 @@ def main():
     update_file_with_new_objects("lineage.json", views, "object")
 
     modifiers = process_all_routines(db, connection_string)
-    update_file_with_new_objects("modifiers.json", modifiers, "table")
+    existing = load_json("modifiers.json")
+    write_json("modifiers.json", merge_modifier_records(existing, modifiers))
 
     print("✅ Done")
 

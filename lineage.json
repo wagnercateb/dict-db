@@ -8459,7 +8459,7 @@
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.RWA_Calculado",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.rwa_calculado_base"
+      "DESIG_D5_Monitoramento_de_Limites.dbo.rwa_calculado_base"
     ],
     "status": "success"
   },
@@ -8506,19 +8506,19 @@
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.VW_SLV_DEMANDAS_TarefaResumo",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.slv_demandas_prioridade",
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.slv_demandas_status",
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.slv_demandas_tarefa",
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.slv_demandas_tarefaatribuicao",
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.slv_demandas_tarefamensagem"
+      "DESIG_D5_Monitoramento_de_Limites.dbo.slv_demandas_prioridade",
+      "DESIG_D5_Monitoramento_de_Limites.dbo.slv_demandas_status",
+      "DESIG_D5_Monitoramento_de_Limites.dbo.slv_demandas_tarefa",
+      "DESIG_D5_Monitoramento_de_Limites.dbo.slv_demandas_tarefaatribuicao",
+      "DESIG_D5_Monitoramento_de_Limites.dbo.slv_demandas_tarefamensagem"
     ],
     "status": "success"
   },
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.View_DLO_Historico_Remessa",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.cad_nome_unicad",
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.dlo_historico_remessa_documentos"
+      "DESIG_D5_Monitoramento_de_Limites.dbo.cad_nome_unicad",
+      "DESIG_D5_Monitoramento_de_Limites.dbo.dlo_historico_remessa_documentos"
     ],
     "status": "success"
   },
@@ -8533,16 +8533,16 @@
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.View_DLO_Documentos_Incluidos",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.cad_nome_unicad",
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.dlo_historico_remessa_documentos"
+      "DESIG_D5_Monitoramento_de_Limites.dbo.cad_nome_unicad",
+      "DESIG_D5_Monitoramento_de_Limites.dbo.dlo_historico_remessa_documentos"
     ],
     "status": "success"
   },
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.View_DLO_Documentos_Rejeitados",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.cad_nome_unicad",
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.dlo_historico_remessa_documentos"
+      "DESIG_D5_Monitoramento_de_Limites.dbo.cad_nome_unicad",
+      "DESIG_D5_Monitoramento_de_Limites.dbo.dlo_historico_remessa_documentos"
     ],
     "status": "success"
   },
@@ -8556,16 +8556,16 @@
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.View_GI_GER_Diario_Ocorrencias",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.gi_ger_diario_ocorrencias",
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.gi_ger_grupo_ocorrencias"
+      "DESIG_D5_Monitoramento_de_Limites.dbo.gi_ger_diario_ocorrencias",
+      "DESIG_D5_Monitoramento_de_Limites.dbo.gi_ger_grupo_ocorrencias"
     ],
     "status": "success"
   },
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.View_DLO_Saldos_DEPRECATED",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.dlo_cod_contas",
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.dlo_saldos"
+      "DESIG_D5_Monitoramento_de_Limites.dbo.dlo_cod_contas",
+      "DESIG_D5_Monitoramento_de_Limites.dbo.dlo_saldos"
     ],
     "status": "success"
   },
@@ -8580,16 +8580,16 @@
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.View_GI_DLO_ROSE_Identificadas",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.gi_dlo_rose_identificadas",
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.view_cad_unicad_completo"
+      "DESIG_D5_Monitoramento_de_Limites.dbo.gi_dlo_rose_identificadas",
+      "DESIG_D5_Monitoramento_de_Limites.dbo.view_cad_unicad_completo"
     ],
     "status": "success"
   },
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.View_DLO_Registro_Autorizacao_OpVedadas_RPS",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.dlo_registro_autorizacao_opvedadas_rps",
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.view_cad_unicad_completo"
+      "DESIG_D5_Monitoramento_de_Limites.dbo.dlo_registro_autorizacao_opvedadas_rps",
+      "DESIG_D5_Monitoramento_de_Limites.dbo.view_cad_unicad_completo"
     ],
     "status": "success"
   },
@@ -8646,7 +8646,7 @@
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.View_DLO_Historico_Remessa_Documentos",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.dlo_historico_remessa_documentos_filtrado"
+      "DESIG_D5_Monitoramento_de_Limites.dbo.dlo_historico_remessa_documentos_filtrado"
     ],
     "status": "success"
   },
@@ -8662,16 +8662,16 @@
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.View_GI_GER_Cartas_Dicon",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.gi_ger_cartas_dicon",
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.view_cad_unicad_completo"
+      "DESIG_D5_Monitoramento_de_Limites.dbo.gi_ger_cartas_dicon",
+      "DESIG_D5_Monitoramento_de_Limites.dbo.view_cad_unicad_completo"
     ],
     "status": "success"
   },
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.VW_DLO_Detalhamento_PEPR",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.dlo_detalhamento_pepr",
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.dlo_detalhamento_pepr_limites1_ate201801"
+      "DESIG_D5_Monitoramento_de_Limites.dbo.dlo_detalhamento_pepr",
+      "DESIG_D5_Monitoramento_de_Limites.dbo.dlo_detalhamento_pepr_limites1_ate201801"
     ],
     "status": "success"
   },
@@ -8685,22 +8685,22 @@
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.VW_DLO_Detalhamento_PR",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.dlo_detalhamento_pr",
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.dlo_detalhamento_pr_limites1_ate201801"
+      "DESIG_D5_Monitoramento_de_Limites.dbo.dlo_detalhamento_pr",
+      "DESIG_D5_Monitoramento_de_Limites.dbo.dlo_detalhamento_pr_limites1_ate201801"
     ],
     "status": "success"
   },
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.View_GI_DDR_Entrega_em_Atraso",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.gi_ddr_entrega_em_atraso"
+      "DESIG_D5_Monitoramento_de_Limites.dbo.gi_ddr_entrega_em_atraso"
     ],
     "status": "success"
   },
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.VW_SLV_INSTRUMENTOS_CAPITAL",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.slv_instrumentos_capital"
+      "DESIG_D5_Monitoramento_de_Limites.dbo.slv_instrumentos_capital"
     ],
     "status": "success"
   },
@@ -8724,35 +8724,35 @@
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.View_GI_DLO_Responsavel_EnvioDoc",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.dlo_responsavel_enviodoc"
+      "DESIG_D5_Monitoramento_de_Limites.dbo.dlo_responsavel_enviodoc"
     ],
     "status": "success"
   },
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.View_GI_Emails",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.view_gi_dlo_responsavel_enviodoc"
+      "DESIG_D5_Monitoramento_de_Limites.dbo.view_gi_dlo_responsavel_enviodoc"
     ],
     "status": "success"
   },
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.View_GI_GER_Portal_Log_Acesso",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.gi_ger_portal_log_acesso"
+      "DESIG_D5_Monitoramento_de_Limites.dbo.gi_ger_portal_log_acesso"
     ],
     "status": "success"
   },
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.View_GI_ROSE_Historico_Remessa_Documentos",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.dlo_historico_remessa_documentos"
+      "DESIG_D5_Monitoramento_de_Limites.dbo.dlo_historico_remessa_documentos"
     ],
     "status": "success"
   },
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.VW_RWA_Calculado_Base",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.dlo_detalhamento_pepr",
+      "DESIG_D5_Monitoramento_de_Limites.dbo.dlo_detalhamento_pepr",
       "DESIG_D5_Monitoramento_de_Limites.dbo.dlo_saldos",
       "DESIG_D5_Monitoramento_de_Limites.dbo.slv_escopo_total"
     ],
@@ -8775,8 +8775,8 @@
   {
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.View_GI_DLO_Inconsistencias",
     "sources": [
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.gi_dlo_inconsistencias_enviadas",
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.gi_dlo_inconsistencias_identificadas"
+      "DESIG_D5_Monitoramento_de_Limites.dbo.gi_dlo_inconsistencias_enviadas",
+      "DESIG_D5_Monitoramento_de_Limites.dbo.gi_dlo_inconsistencias_identificadas"
     ],
     "status": "success"
   },
@@ -8784,9 +8784,9 @@
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.VW_RWA_ANALISE_229_GRUPOS_FPR",
     "sources": [
       "DESIG_D5_Monitoramento_de_Limites.dbo.dados",
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.dlo_fpr_grupos_atribuidos",
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.rwa_calculado_base",
+      "DESIG_D5_Monitoramento_de_Limites.dbo.dlo_fpr_grupos_atribuidos",
       "DESIG_D5_Monitoramento_de_Limites.dbo.dlo_saldos",
+      "DESIG_D5_Monitoramento_de_Limites.dbo.rwa_calculado_base",
       "DESIG_D5_Monitoramento_de_Limites.dbo.slv_escopo_total",
       "desig_d5_monitoramento_de_limites.dbo.dlo_fpr_contas_excluir"
     ],
@@ -8803,10 +8803,28 @@
     "object": "DESIG_D5_Monitoramento_de_Limites.dbo.VW_RWA_ANALISE_229_GRUPOS_CONTAS",
     "sources": [
       "DESIG_D5_Monitoramento_de_Limites.dbo.dados",
-      "DESIG_D5_Monitoramento_de_Limites.dbo.dbo.rwa_calculado_base",
       "DESIG_D5_Monitoramento_de_Limites.dbo.dlo_saldos",
+      "DESIG_D5_Monitoramento_de_Limites.dbo.rwa_calculado_base",
       "DESIG_D5_Monitoramento_de_Limites.dbo.slv_escopo_total"
     ],
+    "status": "success"
+  },
+  {
+    "object": "REPREBH.dbo.CON500",
+    "sources": [],
+    "status": "success"
+  },
+  {
+    "object": "REPREBH.dbo.LIM_Exp_Cambial_Diaria_PRsPorDatabases",
+    "sources": [
+      "desig_d5_monitoramento_de_limites.dbo.dlo_saldos",
+      "desig_d5_monitoramento_de_limites.dbo.lim_exp_cambial_datas_para_relatorio_semanal"
+    ],
+    "status": "success"
+  },
+  {
+    "object": "REPREBH.dbo.VW_LIM_DatasIniciaisAProcessar",
+    "sources": [],
     "status": "success"
   }
 ]
